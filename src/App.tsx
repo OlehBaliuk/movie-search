@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import HTTPService from './services/HTTPService';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const getData = async () => {
+        const response = await HTTPService.get('movie/550', 'get', { api_key: 'd37b6ddc9c46d5659d616cb6fcf9f5ba' });
+        console.log(response);
+    };
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    return (
+        <div className="App">
+            <div></div>
+        </div>
+    );
 }
 
 export default App;
