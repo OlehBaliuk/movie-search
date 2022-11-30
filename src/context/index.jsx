@@ -1,48 +1,28 @@
 import React, { createContext, useState, useEffect, useContext, useMemo } from 'react';
-import api from '../api/api';
-
-const getCategories = (category, setMovies) => {
-    const fetchData = async getMoviesForCategory => {
-        const response = await getMoviesForCategory();
-
-        setMovies(response.results);
-    };
-
-    const categories = {
-        Popular: () => fetchData(api.getPopularMovies),
-        Top: () => fetchData(api.getTopMovies),
-        Upcoming: () => fetchData(api.getUpcomingMovies),
-        'Now in the cinema': () => fetchData(api.getNowInTheCinema),
-    };
-
-    return categories[category]();
-};
+import getMoviesForCategory from '../helpers/getMoviesForCategory';
 
 const ContextData = createContext();
 
 const ContextDataProvider = props => {
-    const [movies, setMovies] = useState([]);
+    const [popularMovies, setPopularMovies] = useState([]);
+    const [topMovies, setTopMovies] = useState([]);
     const [category, setCategory] = useState('Popular');
 
     useEffect(() => {
-        getCategories(category, setMovies);
-    }, [category]);
+        getMoviesForCategory('Popular', setPopularMovies);
+        getMoviesForCategory('Top', setTopMovies);
+    }, []);
 
-    const value = useMemo(() => ({ movies, setCategory, category }), [movies]);
+    const value = useMemo(() => ({ popularMovies, topMovies, setCategory, category }), [popularMovies, topMovies]);
 
-    return (
-        <ContextData.Provider
-            value={value}
-            {...props}
-        />
-    );
+    return <ContextData.Provider value={value} {...props} />;
 };
 
 const useContextData = () => {
     const context = useContext(ContextData);
 
     if (context === undefined) {
-        throw new Error('useUserContext was used outside of its Provider');
+        throw new Error('useContextData was used outside of its Provider');
     }
 
     return context;
