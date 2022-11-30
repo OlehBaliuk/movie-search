@@ -1,0 +1,59 @@
+.movie-info {
+    background-color: rgba(208, 131, 6, 0.5);
+    display: flex;
+    padding: 30px 10% 30px 10%;
+}
+
+.movie-info__poster {
+    height: 350px;
+    border-radius: 10px;
+}
+
+.movie-info__text-wrapper {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
+.movie-info__genres-wrapper span:not(:last-child):after {
+    content: ', ';
+    margin-right: 5px;
+}
+
+.movie-info__rate {
+    font-size: 20px;
+}
+
+.movie-info__description-title {
+    font-size: 20px;
+}
+
+.movie-info__description {
+    text-align: start;
+}
+
+.cast {
+    padding: 30px 10% 30px 10%;
+}
+
+.cast__title {
+    text-align: start;
+}
+
+.actors {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 550px) {
+    .movie-info {
+        display: block;
+    }
+
+    .movie-info__text-wrapper {
+        padding-left: 0;
+    }
+}
