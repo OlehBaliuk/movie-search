@@ -1,0 +1,15 @@
+.movies-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.slick-dots {
+    bottom: -20px;
+}
+
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
+    background-color: orange;
+    border-radius: 50%;
+}

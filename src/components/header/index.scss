@@ -14,9 +14,28 @@
     width: 30vw;
     padding: 0 24px;
     border-radius: 12px;
-    appearance: none;
-    transition: all 0.3s cubic-bezier(0, 0, 0.43, 1.49);
-    transition-property: width, border-radius;
+}
+
+.input-search-wrapper {
+    position: relative;
+}
+
+.input-search__list {
+    display: block;
+    position: absolute;
+    padding: 10px;
+    left: 0;
+    top: 37px;
+    width: 30vw;
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(46, 46, 46);
+    border-radius: 5px;
+    max-height: 205px;
+    overflow: scroll;
+    overflow-x: hidden;
+    text-align: start;
+    z-index: 100;
 }
 
 .logo {
@@ -56,9 +75,14 @@
     left: 0;
     top: 50px;
     width: 160px;
-    background-color: rgba(46, 46, 46, 0.7);
-    border: 2px solid rgb(46, 46, 46);
+    background-color: orange;
+    border: 2px solid orange;
     border-radius: 5px;
+    z-index: 100;
+}
+
+.nav__options-item a {
+    color: white;
 }
 
 .nav__list:hover .nav__options {
