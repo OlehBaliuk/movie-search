@@ -5,6 +5,7 @@ import Layout from './components/layout/Layout';
 import MainPage from './components/mainPage/MainPage';
 import MoviePage from './components/moviePage/MoviePage';
 import { ContextDataProvider } from './context/index';
+import './firebase/firebase';
 
 function App() {
     return (
