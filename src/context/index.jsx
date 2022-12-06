@@ -13,7 +13,7 @@ const ContextDataProvider = props => {
         getMoviesForCategory('Top', setTopMovies);
     }, []);
 
-    const value = useMemo(() => ({ popularMovies, topMovies, setCategory, category }), [popularMovies, topMovies]);
+    const value = { popularMovies, topMovies, setCategory, category };
 
     return <ContextData.Provider value={value} {...props} />;
 };
