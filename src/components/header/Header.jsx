@@ -1,13 +1,19 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.scss';
 import { Link } from 'react-router-dom';
 import api from '../../api/api';
-import { useContextData } from '../../context/index';
+import CATEGORIES from '../../constants/categories';
+import ROUTES from '../../constants/routes';
+import { useAuth } from '../../context/useAuth';
+import { useMovies } from '../../context/useMovies';
 import movieLogo from '../../images/movieLogo.svg';
+import Button from '../sharedComponents/button/Button';
+import InputSearch from '../sharedComponents/inputSearch/InputSearch';
 
 const Header = () => {
-    const [categoriesList] = useState(['Popular', 'Top', 'Upcoming', 'Now in the cinema']);
-    const { setCategory } = useContextData();
+    const [categoriesList] = useState(CATEGORIES);
+    const { setCategory } = useMovies();
+    const { user, setUser } = useAuth();
     const [searchValue, setSearchValue] = useState('');
     const [searchMovies, setSearchMovies] = useState([]);
 
@@ -43,30 +49,22 @@ const Header = () => {
                 </nav>
             </div>
 
-            <div className="input-search-wrapper">
-                <input
-                    className="input-search"
-                    type="search"
-                    placeholder="Search..."
-                    onChange={e => setSearchValue(e.target.value)}
-                    value={searchValue}
-                />
-                {searchValue && (
-                    <ul className="input-search__list">
-                        {searchMovies?.map(movie => (
-                            <li className="input-search__item" key={movie.id}>
-                                <Link to={`/movie/${movie.id}`} onClick={() => setSearchValue('')}>
-                                    {movie.title}
-                                </Link>
-                            </li>
-                        ))}
-                        {!searchMovies.length && <li>no result..</li>}
-                    </ul>
-                )}
-            </div>
+            <InputSearch searchValue={searchValue} searchMovies={searchMovies} setSearchValue={setSearchValue} />
 
             <div className="header__profile-wrapper">
-                <div className="header__profile-avatar"></div>
+                <p className="header__user-name">{user}</p>
+                {user ? (
+                    <Button title={'Log Out'} handleClick={() => setUser(null)} />
+                ) : (
+                    <>
+                        <Link to={`${ROUTES.registration}`} className="header__auth">
+                            Registration
+                        </Link>
+                        <Link to={`${ROUTES.login}`} className="header__auth">
+                            Login
+                        </Link>
+                    </>
+                )}
             </div>
         </header>
     );

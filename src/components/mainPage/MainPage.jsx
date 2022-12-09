@@ -1,12 +1,13 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useContextData } from '../../context/index';
+import ROUTES from '../../constants/routes';
+import { useMovies } from '../../context/useMovies';
 import MovieCard from '../movieCard/MovieCard';
 import CustomSlider from '../sharedComponents/slider/CustomSlider';
 import './index.scss';
 
 const MainPage = () => {
-    const { popularMovies, topMovies } = useContextData();
+    const { popularMovies, topMovies } = useMovies();
 
     return (
         <main>
@@ -14,7 +15,7 @@ const MainPage = () => {
                 <h1 className="category-title">Top</h1>
                 <CustomSlider>
                     {topMovies?.map(movie => (
-                        <Link to={`/movie/${movie.id}`} key={movie.id}>
+                        <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
                             <MovieCard movie={movie} />
                         </Link>
                     ))}
@@ -25,7 +26,7 @@ const MainPage = () => {
                 <h1 className="category-title">Popular</h1>
                 <CustomSlider>
                     {popularMovies?.map(movie => (
-                        <Link to={`/movie/${movie.id}`} key={movie.id}>
+                        <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
                             <MovieCard movie={movie} />
                         </Link>
                     ))}
