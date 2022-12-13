@@ -3,7 +3,7 @@ const apiRoutes = {
     getTopMovies: () => 'movie/top_rated',
     getUpcomingMovies: () => 'movie/upcoming',
     getNowInTheCinema: () => 'movie/now_playing',
-    getSearchMovie: () => 'search/movie',
+    getSearchMovies: () => 'search/movie',
     getMovieInfo: id => `movie/${id}`,
     getCastByMovie: id => `movie/${id}/credits`,
 };

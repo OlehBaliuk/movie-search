@@ -3,26 +3,26 @@ import { Link } from 'react-router-dom';
 import ROUTES from '../../../constants/routes';
 import './index.scss';
 
-const InputSearch = ({ searchValue, searchMovies, setSearchValue }) => {
+const InputSearch = ({ searchValue, searchMovies, setSearchValue, redirectToSearchPage, isFetching }) => {
     return (
-        <div className="input-search-wrapper">
-            <input
-                className="input-search"
-                type="search"
-                placeholder="Search..."
-                onChange={e => setSearchValue(e.target.value)}
-                value={searchValue}
-            />
-            {searchValue && (
+        <div className="form-container">
+            <form onSubmit={redirectToSearchPage}>
+                <input
+                    className="input-search"
+                    type="search"
+                    placeholder="Search..."
+                    onChange={e => setSearchValue(e.target.value)}
+                    value={searchValue}
+                />
+            </form>
+            {searchValue && !isFetching && (
                 <ul className="input-search__list">
                     {searchMovies?.map(movie => (
                         <li className="input-search__item" key={movie.id}>
-                            <Link to={`${ROUTES.movie}/${movie.id}`} onClick={() => setSearchValue('')}>
-                                {movie.title}
-                            </Link>
+                            <Link to={`${ROUTES.movie}/${movie.id}`}>{movie.title}</Link>
                         </li>
                     ))}
-                    {!searchMovies.length && <li>no result..</li>}
+                    {!searchMovies?.length && !isFetching && <li>no result..</li>}
                 </ul>
             )}
         </div>
