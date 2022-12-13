@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import ROUTES from '../../constants/routes';
 import useSearchMovies from '../../customHooks/useSearchMovies';
 import MovieCard from '../movieCard/MovieCard';
 import './index.scss';
@@ -17,7 +18,7 @@ const SearchMoviesPage = () => {
                 <h1>Search result by {`"${searchQuery}"`}</h1>
                 <div className="search-result">
                     {movies?.map(movie => (
-                        <Link to={`/movie/${movie.id}`} key={movie.id}>
+                        <Link to={`/${ROUTES.movie}/${movie.id}`} key={movie.id}>
                             <MovieCard movie={movie} />
                         </Link>
                     ))}

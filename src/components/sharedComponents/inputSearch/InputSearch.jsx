@@ -5,7 +5,7 @@ import './index.scss';
 
 const InputSearch = ({ searchValue, searchMovies, setSearchValue, redirectToSearchPage, isFetching }) => {
     return (
-        <div className="form-container">
+        <div className="input-search-wrapper">
             <form onSubmit={redirectToSearchPage}>
                 <input
                     className="input-search"

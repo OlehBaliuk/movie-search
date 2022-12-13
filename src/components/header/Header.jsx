@@ -3,7 +3,6 @@ import './index.scss';
 import { Link } from 'react-router-dom';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import api from '../../api/api';
 import CATEGORIES from '../../constants/categories';
 import ROUTES from '../../constants/routes';
 import { useAuth } from '../../context/useAuth';
@@ -15,7 +14,6 @@ import InputSearch from '../sharedComponents/inputSearch/InputSearch';
 
 const Header = () => {
     const [categoriesList] = useState(CATEGORIES);
-    const { setCategory } = useMovies();
     const { user, setUser } = useAuth();
     const [searchValue, setSearchValue] = useState('');
     const [searchMovies, setSearchMovies] = useState(null);

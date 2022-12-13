@@ -16,7 +16,7 @@ const MainPage = () => {
                     <h1 className="category-title">Top</h1>
                     <CustomSlider>
                         {topMovies?.map(movie => (
-                            <Link to={`/movie/${movie.id}`} key={movie.id}>
+                            <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
                                 <MovieCard movie={movie} />
                             </Link>
                         ))}
