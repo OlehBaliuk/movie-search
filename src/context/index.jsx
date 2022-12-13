@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext, useMemo } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import getMoviesForCategory from '../helpers/getMoviesForCategory';
 
 const ContextData = createContext();
@@ -6,14 +6,13 @@ const ContextData = createContext();
 const ContextDataProvider = props => {
     const [popularMovies, setPopularMovies] = useState([]);
     const [topMovies, setTopMovies] = useState([]);
-    const [category, setCategory] = useState('Popular');
 
     useEffect(() => {
         getMoviesForCategory('Popular', setPopularMovies);
         getMoviesForCategory('Top', setTopMovies);
     }, []);
 
-    const value = { popularMovies, topMovies, setCategory, category };
+    const value = { popularMovies, topMovies };
 
     return <ContextData.Provider value={value} {...props} />;
 };
