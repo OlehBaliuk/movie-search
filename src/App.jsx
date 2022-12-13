@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import MainPage from './components/mainPage/MainPage';
 import MoviePage from './components/moviePage/MoviePage';
+import SearchMoviesPage from './components/SearchMoviesPage/SearchMoviesPage';
 import { ContextDataProvider } from './context/index';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/" element={<Layout />}>
                         <Route index element={<MainPage />} />
                         <Route path="movie/:id" element={<MoviePage />} />
+                        <Route path="search" element={<SearchMoviesPage />} />
                     </Route>
                 </Routes>
             </div>

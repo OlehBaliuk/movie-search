@@ -8,7 +8,7 @@ const MovieCard = ({ movie }) => {
             <img className="movie-card__poster" src={getMoviePosterPath(movie.poster_path)} alt="poster" />
             <div className="movie-card__text-wrapper">
                 <strong className="movie-card__title">{movie.title}</strong>
-                <p className="movie-card__release-year">{movie.release_date.slice(0, 4)}</p>
+                <p className="movie-card__release-year">{movie.release_date?.slice(0, 4)}</p>
             </div>
         </div>
     );

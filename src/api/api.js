@@ -20,8 +20,8 @@ const api = {
         });
         return response.data;
     },
-    getSearchMovie: async name => {
-        const response = await httpService.get(apiRoutes.getSearchMovie(), { query: name });
+    getSearchMovies: async name => {
+        const response = await httpService.get(apiRoutes.getSearchMovies(), { query: name });
         return response.data;
     },
     getMovieInfo: async id => {

@@ -10,14 +10,19 @@ const MoviePage = () => {
     const [movie, setMovie] = useState({});
     const [cast, setCast] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
+    const fetchData = async () => {
+        try {
             const responseMovieInfo = await api.getMovieInfo(id);
             setMovie(responseMovieInfo);
 
             const responseCastByMovie = await api.getCastByMovie(id);
             setCast(responseCastByMovie.cast);
-        };
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
         fetchData();
     }, [id]);
 

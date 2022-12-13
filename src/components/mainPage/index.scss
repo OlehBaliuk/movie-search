@@ -1,12 +1,5 @@
 .movies-wrapper {
-    width: 80%;
-    margin: 0 auto;
     padding-bottom: 30px;
-}
-
-main {
-    background-image: url('../../images/background.jpg');
-    background-size: cover;
 }
 
 .slick-dots li button:before {
@@ -46,12 +39,4 @@ main {
 
 .slick-next {
     right: -40px;
-}
-
-.category-title {
-    color: white;
-}
-
-.main-content-wrapper {
-    background: rgba(0, 0, 0, 0.5);
 }

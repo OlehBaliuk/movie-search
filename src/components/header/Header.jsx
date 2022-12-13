@@ -1,25 +1,35 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.scss';
 import { Link } from 'react-router-dom';
-import api from '../../api/api';
-import { useContextData } from '../../context/index';
+import { useNavigate, createSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import CATEGORIES from '../../constants/categories';
+import useSearchMovies from '../../customHooks/useSearchMovies';
 import movieLogo from '../../images/movieLogo.svg';
 
 const Header = () => {
-    const [categoriesList] = useState(['Popular', 'Top', 'Upcoming', 'Now in the cinema']);
-    const { setCategory } = useContextData();
+    const [categoriesList] = useState(CATEGORIES);
     const [searchValue, setSearchValue] = useState('');
-    const [searchMovies, setSearchMovies] = useState([]);
+    const [searchMovies, setSearchMovies] = useState(null);
+    const { isFetching } = useSearchMovies(searchValue, setSearchMovies);
+    const navigate = useNavigate();
+    let location = useLocation();
 
     useEffect(() => {
+        return () => {
+            setSearchValue('');
+        };
+    }, [location.pathname]);
+
+    const redirectToSearchPage = e => {
+        e.preventDefault();
         if (searchValue) {
-            async function fetchData(searchValue) {
-                const response = await api.getSearchMovie(searchValue);
-                setSearchMovies(response.results);
-            }
-            fetchData(searchValue);
+            navigate({
+                pathname: 'search',
+                search: `${createSearchParams({ filmName: searchValue })}`,
+            });
         }
-    }, [searchValue]);
+    };
 
     return (
         <header className="header">
@@ -33,7 +43,7 @@ const Header = () => {
                             <strong className="nav__list-item-title">Movies</strong>
                             <ul className="nav__options">
                                 {categoriesList.map((category, i) => (
-                                    <li className="nav__options-item" onClick={() => setCategory(category)} key={i}>
+                                    <li className="nav__options-item" key={i}>
                                         <Link to="/">{category}</Link>
                                     </li>
                                 ))}
@@ -43,24 +53,24 @@ const Header = () => {
                 </nav>
             </div>
 
-            <div className="input-search-wrapper">
-                <input
-                    className="input-search"
-                    type="search"
-                    placeholder="Search..."
-                    onChange={e => setSearchValue(e.target.value)}
-                    value={searchValue}
-                />
-                {searchValue && (
+            <div className="form-container">
+                <form onSubmit={redirectToSearchPage}>
+                    <input
+                        className="input-search"
+                        type="search"
+                        placeholder="Search..."
+                        onChange={e => setSearchValue(e.target.value)}
+                        value={searchValue}
+                    />
+                </form>
+                {searchValue && !isFetching && (
                     <ul className="input-search__list">
                         {searchMovies?.map(movie => (
                             <li className="input-search__item" key={movie.id}>
-                                <Link to={`/movie/${movie.id}`} onClick={() => setSearchValue('')}>
-                                    {movie.title}
-                                </Link>
+                                <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
                             </li>
                         ))}
-                        {!searchMovies.length && <li>no result..</li>}
+                        {!searchMovies?.length && !isFetching && <li>no result..</li>}
                     </ul>
                 )}
             </div>
