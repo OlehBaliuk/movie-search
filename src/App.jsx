@@ -1,15 +1,9 @@
 import React from 'react';
-import './App.scss';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import LoginPage from './components/loginPage/LoginPage';
-import MainPage from './components/mainPage/MainPage';
-import MoviePage from './components/moviePage/MoviePage';
-import RegistrationPage from './components/registrationPage/RegistrationPage';
-import SearchMoviesPage from './components/SearchMoviesPage/SearchMoviesPage';
-import { ContextAuthProvider } from './context/useAuth';
-import { ContextMoviesProvider } from './context/useMovies';
+import { RegistrationPage, MoviePage, MainPage, LoginPage, Layout, SearchMoviesPage } from '@components';
+import { ContextAuthProvider, ContextMoviesProvider } from '@context';
 import './firebase/firebase';
+import './App.scss';
 
 function App() {
     return (

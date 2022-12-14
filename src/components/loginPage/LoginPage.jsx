@@ -1,7 +1,6 @@
 import React from 'react';
+import { Modal, Form } from '@sharedComponents';
 import useLoginPageState from './useLoginPageState';
-import Form from '../sharedComponents/form/Form';
-import Modal from '../sharedComponents/modal/Modal';
 import './index.scss';
 
 const LoginPage = () => {
@@ -9,7 +8,7 @@ const LoginPage = () => {
 
     return (
         <>
-            <h1>Login</h1>
+            <h1 className="login-title">Login</h1>
             <Form handleSubmit={handleLogin} loading={loading} />
             <Modal active={modalActive} setActive={setModalActive}>
                 {error?.message}

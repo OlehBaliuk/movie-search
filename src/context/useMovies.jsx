@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect, useContext, useMemo } from 'react';
-import getMoviesForCategory from '../helpers/getMoviesForCategory';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { getMoviesForCategory } from '@helpers';
 
 const ContextMovies = createContext();
 

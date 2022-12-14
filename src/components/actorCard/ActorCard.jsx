@@ -1,6 +1,6 @@
 import React from 'react';
+import { getMoviePosterPath } from '@helpers';
 import './index.scss';
-import { getMoviePosterPath } from '../../helpers/urlPathMoviePoster';
 
 const ActorCard = ({ actor }) => {
     return (

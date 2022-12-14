@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import api from '../../api/api';
+import { api } from '@api';
+import { ActorCard } from '@components';
+import { getMoviePosterPath } from '@helpers';
 import './index.scss';
-import { getMoviePosterPath } from '../../helpers/urlPathMoviePoster';
-import ActorCard from '../actorCard/ActorCard';
 
 const MoviePage = () => {
     const { id } = useParams();

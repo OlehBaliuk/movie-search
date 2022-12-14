@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import ROUTES from '../../constants/routes';
-import useSearchMovies from '../../customHooks/useSearchMovies';
-import MovieCard from '../movieCard/MovieCard';
+import { useSearchParams, Link } from 'react-router-dom';
+import { MovieCard } from '@components';
+import { ROUTES } from '@constants';
+import { useSearchMovies } from '@customHooks';
 import './index.scss';
 
 const SearchMoviesPage = () => {

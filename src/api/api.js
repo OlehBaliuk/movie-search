@@ -1,7 +1,7 @@
+import { httpService } from '@services';
 import apiRoutes from './apiRoutes';
-import { httpService } from '../services/instanceHttpService';
 
-const api = {
+export const api = {
     getPopularMovies: async () => {
         const response = await httpService.get(apiRoutes.getPopularMovies());
         return response.data;
@@ -33,5 +33,3 @@ const api = {
         return response.data;
     },
 };
-
-export default api;

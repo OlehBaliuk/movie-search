@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import api from '../api/api';
+import { api } from '@api';
 
-const useSearchMovies = (searchValue, setSearchMovies) => {
+export const useSearchMovies = (searchValue, setSearchMovies) => {
     const [isFetching, setIsFetching] = useState(true);
 
     async function getSearchMovies(searchValue, setSearchMovies) {
@@ -21,4 +21,3 @@ const useSearchMovies = (searchValue, setSearchMovies) => {
 
     return { isFetching };
 };
-export default useSearchMovies;
