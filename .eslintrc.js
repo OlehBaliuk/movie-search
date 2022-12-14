@@ -9,9 +9,17 @@ module.exports = {
     rules: {
         'prettier/prettier': 2,
         'import/order': [
-            2,
+            1,
             {
-                groups: ['external', 'builtin', 'index', 'sibling', 'parent', 'internal', 'type'],
+                groups: ['builtin', 'external', 'internal'],
+                pathGroups: [
+                    {
+                        pattern: 'react',
+                        group: 'external',
+                        position: 'before',
+                    },
+                ],
+                pathGroupsExcludedImportTypes: ['react'],
                 alphabetize: {
                     order: 'asc',
                     caseInsensitive: true,

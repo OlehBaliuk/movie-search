@@ -1,6 +1,6 @@
-import api from '../api/api';
+import { api } from '@api';
 
-const getMoviesForCategory = (category, setMovies) => {
+export const getMoviesForCategory = (category, setMovies) => {
     const fetchData = async getMovies => {
         const response = await getMovies();
 
@@ -16,5 +16,3 @@ const getMoviesForCategory = (category, setMovies) => {
 
     return categories[category]();
 };
-
-export default getMoviesForCategory;

@@ -1,7 +1,6 @@
 import React from 'react';
+import { Form, Modal } from '@sharedComponents';
 import useRegistrationPageState from './useRegistrationPageState';
-import Form from '../sharedComponents/form/Form';
-import Modal from '../sharedComponents/modal/Modal';
 import './index.scss';
 
 const RegistrationPage = () => {
@@ -9,7 +8,7 @@ const RegistrationPage = () => {
 
     return (
         <>
-            <h1>Registration</h1>
+            <h1 className="registration-title">Registration</h1>
             <Form handleSubmit={handleRegistration} registration={true} loading={loading} />
             <Modal active={modalActive} setActive={setModalActive}>
                 {error?.message}

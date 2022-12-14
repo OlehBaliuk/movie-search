@@ -1,8 +1,8 @@
-import { getAuth } from 'firebase/auth';
 import React, { useState } from 'react';
+import { getAuth } from 'firebase/auth';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/useAuth';
+import { useAuth } from '@context';
 
 const useLoginPageState = () => {
     const navigate = useNavigate();

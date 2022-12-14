@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './index.scss';
-import Preloader from '../../sharedComponents/preloader/Preloader';
-import Button from '../button/Button';
+import { Button, Preloader } from '@sharedComponents';
 
 const Form = ({ handleSubmit, registration, loading }) => {
     const [login, setLogin] = useState('');

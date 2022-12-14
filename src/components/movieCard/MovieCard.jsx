@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.scss';
-import { getMoviePosterPath } from '../../helpers/urlPathMoviePoster';
+import { getMoviePosterPath } from '@helpers';
 
 const MovieCard = ({ movie }) => {
     return (

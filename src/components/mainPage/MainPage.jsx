@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ROUTES from '../../constants/routes';
-import { useMovies } from '../../context/useMovies';
-import MovieCard from '../movieCard/MovieCard';
-import CustomSlider from '../sharedComponents/slider/CustomSlider';
+import { MovieCard } from '@components';
+import { ROUTES } from '@constants';
+import { useMovies } from '@context';
+import { CustomSlider } from '@sharedComponents';
 import './index.scss';
 
 const MainPage = () => {

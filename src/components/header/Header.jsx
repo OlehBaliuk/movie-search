@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import movieLogo from '@images/movieLogo.svg';
+import { useNavigate, createSearchParams, useLocation, Link } from 'react-router-dom';
+import { ROUTES, CATEGORIES } from '@constants';
+import { useAuth } from '@context';
+import { useSearchMovies } from '@customHooks';
+import { InputSearch, Button } from '@sharedComponents';
 import './index.scss';
-import { Link } from 'react-router-dom';
-import { useNavigate, createSearchParams } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import CATEGORIES from '../../constants/categories';
-import ROUTES from '../../constants/routes';
-import { useAuth } from '../../context/useAuth';
-import { useMovies } from '../../context/useMovies';
-import useSearchMovies from '../../customHooks/useSearchMovies';
-import movieLogo from '../../images/movieLogo.svg';
-import Button from '../sharedComponents/button/Button';
-import InputSearch from '../sharedComponents/inputSearch/InputSearch';
 
 const Header = () => {
     const [categoriesList] = useState(CATEGORIES);
@@ -25,7 +20,7 @@ const Header = () => {
         return () => {
             setSearchValue('');
         };
-    }, [location.pathname]);
+    }, [location.pathname, location.search]);
 
     const redirectToSearchPage = e => {
         e.preventDefault();

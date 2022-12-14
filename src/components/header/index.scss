@@ -87,15 +87,15 @@
 .header__log-out {
     cursor: pointer;
     font-weight: 500;
-    .input-search__list::-webkit-scrollbar {
-        width: 10px;
-    }
+}
+.input-search__list::-webkit-scrollbar {
+    width: 10px;
+}
 
-    .input-search__list::-webkit-scrollbar-track {
-        background: #ccc;
-    }
+.input-search__list::-webkit-scrollbar-track {
+    background: #ccc;
+}
 
-    .input-search__list::-webkit-scrollbar-thumb {
-        background: orange;
-    }
+.input-search__list::-webkit-scrollbar-thumb {
+    background: orange;
 }

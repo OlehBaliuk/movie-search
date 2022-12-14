@@ -1,8 +1,8 @@
-import { getAuth } from 'firebase/auth';
 import React, { useState } from 'react';
+import { useAuth } from '@context/useAuth';
+import { getAuth } from 'firebase/auth';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/useAuth';
 
 const useRegistrationPageState = () => {
     const navigate = useNavigate();
