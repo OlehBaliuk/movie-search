@@ -1,7 +1,8 @@
 .movie-info {
-    background-color: rgba(208, 131, 6, 0.5);
+    background-color: rgb(243, 193, 112);
     display: flex;
-    padding: 30px 10% 30px 10%;
+    padding: 30px;
+    min-height: 50vh;
 }
 
 .movie-info__poster {
@@ -39,7 +40,9 @@
 }
 
 .cast {
-    padding: 30px 10% 30px 10%;
+    padding: 30px;
+    background: white;
+    min-height: calc(50vh - 50px);
 }
 
 .cast__title {
