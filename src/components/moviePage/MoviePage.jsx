@@ -27,7 +27,7 @@ const MoviePage = () => {
     }, [id]);
 
     return (
-        <>
+        <main>
             <div className="movie-info">
                 <img className="movie-info__poster" src={getMoviePosterPath(movie.poster_path)} alt="poster" />
                 <div className="movie-info__text-wrapper">
@@ -48,12 +48,12 @@ const MoviePage = () => {
             <div className="cast">
                 <h2 className="cast__title">Cast</h2>
                 <div className="actors">
-                    {cast.slice(0, 10).map(actor => (
+                    {cast.slice(0, 9).map(actor => (
                         <ActorCard actor={actor} key={actor.id} />
                     ))}
                 </div>
             </div>
-        </>
+        </main>
     );
 };
 
