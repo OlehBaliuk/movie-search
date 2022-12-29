@@ -26,7 +26,7 @@ module.exports = {
                 },
             },
         ],
-        indent: ['error', 4],
+        indent: ['error', 4, { SwitchCase: 1 }],
         semi: 'off',
     },
 };
