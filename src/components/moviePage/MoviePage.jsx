@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import saveIconOrange from '@images/saveIconOrange.svg';
+import saveIconWhite from '@images/saveIconWhite.svg';
 import { useParams } from 'react-router-dom';
 import { api } from '@api';
 import { ActorCard } from '@components';
+import { useSavedList } from '@customHooks';
 import { getMoviePosterPath } from '@helpers';
 import './index.scss';
 
@@ -9,6 +12,7 @@ export const MoviePage = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState({});
     const [cast, setCast] = useState([]);
+    const { user, isSavedMovie, addMovieToSavedList, deleteMovieFromSavedList } = useSavedList(movie);
 
     const fetchData = async () => {
         try {
@@ -29,7 +33,20 @@ export const MoviePage = () => {
     return (
         <main>
             <div className="movie-info">
-                <img className="movie-info__poster" src={getMoviePosterPath(movie.poster_path)} alt="poster" />
+                <div className="movie-info__poster-wrapper">
+                    {user && (
+                        <div className="save-icon-wrapper">
+                            <img
+                                onClick={isSavedMovie ? deleteMovieFromSavedList : addMovieToSavedList}
+                                className="save-icon"
+                                src={isSavedMovie ? saveIconOrange : saveIconWhite}
+                                alt="saveIcon"
+                            />
+                        </div>
+                    )}
+                    <img className="movie-info__poster" src={getMoviePosterPath(movie.poster_path)} alt="poster" />
+                </div>
+
                 <div className="movie-info__text-wrapper">
                     <h1 className="movie-info__title">{movie.title}</h1>
                     <div className="movie-info__genres-wrapper">

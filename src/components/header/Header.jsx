@@ -56,7 +56,7 @@ export const Header = () => {
             <div className="header__profile-wrapper">
                 {user ? (
                     <>
-                        <p className="header__user-name">{user}</p>
+                        <p className="header__user-name">{user.email}</p>
                         <Link to={ROUTES.savedList}>
                             <img className="header-save-icon" src={saveIcon} alt="movie" />
                         </Link>
