@@ -1,8 +1,7 @@
-import Button from './button/Button';
-import CustomSlider from './customSlider/CustomSlider';
-import Form from './form/Form';
-import InputSearch from './inputSearch/InputSearch';
-import ErrorModal from './modal/ErrorModal';
-import Preloader from './preloader/Preloader';
-
-export { Button, CustomSlider, Form, InputSearch, ErrorModal, Preloader };
+export { Button } from './button/Button';
+export { CustomSlider } from './customSlider/CustomSlider';
+export { Form } from './form/Form';
+export { InputSearch } from './inputSearch/InputSearch';
+export { ErrorModal } from './modal/ErrorModal';
+export { Preloader } from './preloader/Preloader';
+export { Input } from './input/Input';

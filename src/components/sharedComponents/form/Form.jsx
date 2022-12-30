@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './index.scss';
 import { Button, Preloader } from '@sharedComponents';
 
-const Form = ({ handleSubmit, registration, loading }) => {
+export const Form = ({ handleSubmit, registration, loading }) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
@@ -50,5 +50,3 @@ const Form = ({ handleSubmit, registration, loading }) => {
         </form>
     );
 };
-
-export default Form;

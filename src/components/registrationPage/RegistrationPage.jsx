@@ -4,7 +4,7 @@ import { Form, ErrorModal } from '@sharedComponents';
 import useRegistrationPageState from './useRegistrationPageState';
 import './index.scss';
 
-const RegistrationPage = () => {
+export const RegistrationPage = () => {
     const { handleRegistration, modalActive, setModalActive, loading, error } = useRegistrationPageState();
 
     return (
@@ -17,5 +17,3 @@ const RegistrationPage = () => {
         </main>
     );
 };
-
-export default RegistrationPage;

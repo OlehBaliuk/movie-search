@@ -1,20 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@constants';
+import { Input } from '@sharedComponents';
 import './index.scss';
 
-const InputSearch = ({ searchValue, searchMovies, setSearchValue, redirectToSearchPage, isFetching }) => {
+export const InputSearch = ({
+    searchValue,
+    searchMovies,
+    handleChange,
+    redirectToSearchPage,
+    isFetching,
+    type,
+    placeholder,
+}) => {
     return (
         <div className="input-search-wrapper">
-            <form onSubmit={redirectToSearchPage}>
-                <input
-                    className="input-search"
-                    type="search"
-                    placeholder="Search..."
-                    onChange={e => setSearchValue(e.target.value)}
-                    value={searchValue}
-                />
-            </form>
+            <Input
+                handleSubmit={redirectToSearchPage}
+                handleChange={handleChange}
+                value={searchValue}
+                type={type}
+                placeholder={placeholder}
+            />
             {searchValue && !isFetching && (
                 <ul className="input-search__list">
                     {searchMovies?.map(movie => (
@@ -28,5 +35,3 @@ const InputSearch = ({ searchValue, searchMovies, setSearchValue, redirectToSear
         </div>
     );
 };
-
-export default InputSearch;

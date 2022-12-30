@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuthErrorHandler } from '@customHooks';
 import './index.scss';
 
-const ErrorModal = ({ active, setActive, message }) => {
+export const ErrorModal = ({ active, setActive, message }) => {
     const { displayCustomAuthError } = useAuthErrorHandler();
 
     return (
@@ -13,5 +13,3 @@ const ErrorModal = ({ active, setActive, message }) => {
         </div>
     );
 };
-
-export default ErrorModal;

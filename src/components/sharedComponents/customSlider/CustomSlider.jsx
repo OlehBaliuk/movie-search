@@ -4,8 +4,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import settings from './sliderSettings';
 
-const CustomSlider = ({ children }) => {
+export const CustomSlider = ({ children }) => {
     return <Slider {...settings}>{children}</Slider>;
 };
-
-export default CustomSlider;

@@ -3,7 +3,7 @@ import { ErrorModal, Form } from '@sharedComponents';
 import useLoginPageState from './useLoginPageState';
 import './index.scss';
 
-const LoginPage = () => {
+export const LoginPage = () => {
     const { handleLogin, modalActive, setModalActive, loading, error } = useLoginPageState();
 
     return (
@@ -16,5 +16,3 @@ const LoginPage = () => {
         </main>
     );
 };
-
-export default LoginPage;

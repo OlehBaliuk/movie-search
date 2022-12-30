@@ -1,36 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import movieLogo from '@images/movieLogo.svg';
-import { useNavigate, createSearchParams, useLocation, Link } from 'react-router-dom';
+import saveIcon from '@images/save.svg';
+import { Link } from 'react-router-dom';
 import { ROUTES, CATEGORIES } from '@constants';
-import { useAuth } from '@context';
-import { useSearchMovies } from '@customHooks';
 import { InputSearch, Button } from '@sharedComponents';
+import useHeaderState from './useHeaderState';
 import './index.scss';
 
-const Header = () => {
-    const [categoriesList] = useState(CATEGORIES);
-    const { user, setUser } = useAuth();
-    const [searchValue, setSearchValue] = useState('');
-    const [searchMovies, setSearchMovies] = useState(null);
-    const { isFetching } = useSearchMovies(searchValue, setSearchMovies);
-    const navigate = useNavigate();
-    let location = useLocation();
-
-    useEffect(() => {
-        return () => {
-            setSearchValue('');
-        };
-    }, [location.pathname, location.search]);
-
-    const redirectToSearchPage = e => {
-        e.preventDefault();
-        if (searchValue) {
-            navigate({
-                pathname: 'search',
-                search: `${createSearchParams({ filmName: searchValue })}`,
-            });
-        }
-    };
+export const Header = () => {
+    const {
+        isSearchInputVisible,
+        user,
+        setUser,
+        searchMovies,
+        isFetching,
+        searchValue,
+        handleChange,
+        redirectToSearchPage,
+    } = useHeaderState();
 
     return (
         <header className="header">
@@ -43,7 +30,7 @@ const Header = () => {
                         <li className="nav__list-item">
                             <strong className="nav__list-item-title">Movies</strong>
                             <ul className="nav__options">
-                                {categoriesList.map((category, i) => (
+                                {CATEGORIES.map((category, i) => (
                                     <li className="nav__options-item" key={i}>
                                         <Link to="/">{category}</Link>
                                     </li>
@@ -54,24 +41,33 @@ const Header = () => {
                 </nav>
             </div>
 
-            <InputSearch
-                searchValue={searchValue}
-                searchMovies={searchMovies}
-                setSearchValue={setSearchValue}
-                redirectToSearchPage={redirectToSearchPage}
-                isFetching={isFetching}
-            />
+            {isSearchInputVisible && (
+                <InputSearch
+                    searchValue={searchValue}
+                    searchMovies={searchMovies}
+                    handleChange={handleChange}
+                    redirectToSearchPage={redirectToSearchPage}
+                    isFetching={isFetching}
+                    placeholder="Search..."
+                    type="search"
+                />
+            )}
 
             <div className="header__profile-wrapper">
-                <p className="header__user-name">{user}</p>
                 {user ? (
-                    <Button title={'Log Out'} handleClick={() => setUser(null)} />
+                    <>
+                        <p className="header__user-name">{user}</p>
+                        <Link to={ROUTES.savedList}>
+                            <img className="header-save-icon" src={saveIcon} alt="movie" />
+                        </Link>
+                        <Button title="Log Out" handleClick={() => setUser(null)} />
+                    </>
                 ) : (
                     <>
-                        <Link to={`${ROUTES.registration}`} className="header__auth">
+                        <Link to={ROUTES.registration} className="header__auth">
                             Registration
                         </Link>
-                        <Link to={`${ROUTES.login}`} className="header__auth">
+                        <Link to={ROUTES.login} className="header__auth">
                             Login
                         </Link>
                     </>
@@ -80,5 +76,3 @@ const Header = () => {
         </header>
     );
 };
-
-export default Header;
