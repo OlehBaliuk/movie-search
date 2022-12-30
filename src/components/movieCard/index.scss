@@ -1,6 +1,21 @@
 .movie-card {
     padding: 15px;
     width: 190px;
+    position: relative;
+
+    .save-icon-wrapper {
+        width: 160px;
+    }
+}
+
+.movie-card:hover {
+    .save-icon {
+        display: block !important;
+    }
+
+    .save-icon-wrapper {
+        display: block;
+    }
 }
 
 .movie-card__poster {

@@ -10,7 +10,8 @@
             "@helpers": ["src/helpers"],
             "@images": ["src/images"],
             "@sharedComponents": ["src/components/sharedComponents"],
-            "@customHooks": ["src/customHooks"]
+            "@customHooks": ["src/customHooks"],
+            "@firebaseConfig": ["src/firebaseConfig"]
         }
     }
 }

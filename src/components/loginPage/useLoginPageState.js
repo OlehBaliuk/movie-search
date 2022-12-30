@@ -14,7 +14,8 @@ const useLoginPageState = () => {
     const handleLogin = async (email, password) => {
         try {
             const response = await signInWithEmailAndPassword(email, password);
-            setUser(response.user.email);
+
+            setUser({ email: response.user.email, uid: response.user.uid });
             navigate('/');
         } catch {
             setModalActive(true);

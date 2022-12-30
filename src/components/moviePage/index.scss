@@ -1,13 +1,31 @@
 .movie-info {
     background-color: rgb(243, 193, 112);
     display: flex;
+    position: relative;
     padding: 30px;
     min-height: 50vh;
+
+    .save-icon-wrapper {
+        width: 225px;
+    }
 }
 
-.movie-info__poster {
-    height: 350px;
-    border-radius: 10px;
+.movie-info__poster-wrapper:hover {
+    .save-icon {
+        display: block !important;
+    }
+
+    .save-icon-wrapper {
+        display: block;
+    }
+}
+.movie-info {
+    &__poster {
+        max-width: none;
+        height: 350px;
+        width: 225px;
+        border-radius: 10px;
+    }
 }
 
 .movie-info__text-wrapper {
@@ -16,6 +34,7 @@
     justify-content: center;
     flex-direction: column;
     padding-left: 30px;
+    max-width: 85%;
 
     .movie-info__title {
         color: black;

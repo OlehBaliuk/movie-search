@@ -14,7 +14,7 @@ const useRegistrationPageState = () => {
     const handleRegistration = async (email, password) => {
         try {
             const response = await createUserWithEmailAndPassword(email, password);
-            setUser(response.user.email);
+            setUser({ email: response.user.email, uid: response.user.uid });
             navigate('/');
         } catch {
             setModalActive(true);
