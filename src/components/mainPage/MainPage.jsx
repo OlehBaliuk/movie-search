@@ -6,7 +6,7 @@ import { useMovies } from '@context';
 import { CustomSlider } from '@sharedComponents';
 import './index.scss';
 
-const MainPage = () => {
+export const MainPage = () => {
     const { popularMovies, topMovies } = useMovies();
 
     return (
@@ -27,7 +27,7 @@ const MainPage = () => {
                     <h1 className="category-title">Popular</h1>
                     <CustomSlider>
                         {popularMovies?.map(movie => (
-                            <Link to={`/movie/${movie.id}`} key={movie.id}>
+                            <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
                                 <MovieCard movie={movie} />
                             </Link>
                         ))}
@@ -37,5 +37,3 @@ const MainPage = () => {
         </main>
     );
 };
-
-export default MainPage;

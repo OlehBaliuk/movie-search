@@ -1,11 +1,10 @@
-import ActorCard from './actorCard/ActorCard';
-import Header from './header/Header';
-import Layout from './layout/Layout';
-import LoginPage from './loginPage/LoginPage';
-import MainPage from './mainPage/MainPage';
-import MovieCard from './movieCard/MovieCard';
-import MoviePage from './moviePage/MoviePage';
-import RegistrationPage from './registrationPage/RegistrationPage';
-import SearchMoviesPage from './SearchMoviesPage/SearchMoviesPage';
-
-export { ActorCard, Header, LoginPage, MainPage, MovieCard, MoviePage, RegistrationPage, Layout, SearchMoviesPage };
+export { Header } from './header/Header';
+export { Layout } from './layout/Layout';
+export { LoginPage } from './loginPage/LoginPage';
+export { MainPage } from './mainPage/MainPage';
+export { MovieCard } from './movieCard/MovieCard';
+export { MoviePage } from './moviePage/MoviePage';
+export { RegistrationPage } from './registrationPage/RegistrationPage';
+export { SavedMoviesList } from './savedMoviesList/SavedMoviesList';
+export { SearchMoviesPage } from './searchMoviesPage/SearchMoviesPage';
+export { ActorCard } from './actorCard/ActorCard';

@@ -1,5 +1,7 @@
 export const ROUTES = {
-    movie: 'movie',
-    registration: 'registration',
-    login: 'login',
+    movie: '/movie',
+    registration: '/registration',
+    login: '/login',
+    savedList: '/saved-list',
+    search: '/search',
 };

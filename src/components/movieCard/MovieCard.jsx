@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import { getMoviePosterPath } from '@helpers';
 
-const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie }) => {
     return (
         <div className="movie-card">
             <img className="movie-card__poster" src={getMoviePosterPath(movie.poster_path)} alt="poster" />
@@ -13,5 +13,3 @@ const MovieCard = ({ movie }) => {
         </div>
     );
 };
-
-export default MovieCard;

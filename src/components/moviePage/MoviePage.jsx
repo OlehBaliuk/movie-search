@@ -5,7 +5,7 @@ import { ActorCard } from '@components';
 import { getMoviePosterPath } from '@helpers';
 import './index.scss';
 
-const MoviePage = () => {
+export const MoviePage = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState({});
     const [cast, setCast] = useState([]);
@@ -56,5 +56,3 @@ const MoviePage = () => {
         </main>
     );
 };
-
-export default MoviePage;

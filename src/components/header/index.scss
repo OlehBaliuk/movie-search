@@ -79,7 +79,6 @@
 }
 
 .header__user-name {
-    padding-right: 10px;
     display: flex;
     align-items: center;
 }
@@ -88,6 +87,7 @@
     cursor: pointer;
     font-weight: 500;
 }
+
 .input-search__list::-webkit-scrollbar {
     width: 10px;
 }
@@ -98,4 +98,10 @@
 
 .input-search__list::-webkit-scrollbar-thumb {
     background: orange;
+}
+
+.header-save-icon {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
 }
