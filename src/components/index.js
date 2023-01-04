@@ -8,3 +8,4 @@ export { RegistrationPage } from './registrationPage/RegistrationPage';
 export { SavedMoviesList } from './savedMoviesList/SavedMoviesList';
 export { SearchMoviesPage } from './searchMoviesPage/SearchMoviesPage';
 export { ActorCard } from './actorCard/ActorCard';
+export { CategoryPage } from './categoryPage/CategoryPage';

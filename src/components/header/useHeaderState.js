@@ -37,6 +37,14 @@ const useHeaderState = () => {
         setSearchValue(e.target.value);
     };
 
+    const redirectToCategoryPage = (e, category) => {
+        e.preventDefault();
+        navigate({
+            pathname: ROUTES.category,
+            search: `${createSearchParams({ category: category })}`,
+        });
+    };
+
     return {
         isSearchInputVisible,
         user,
@@ -46,6 +54,7 @@ const useHeaderState = () => {
         searchValue,
         handleChange,
         redirectToSearchPage,
+        redirectToCategoryPage,
     };
 };
 

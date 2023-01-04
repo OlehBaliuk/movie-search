@@ -2,24 +2,25 @@ import { httpService } from '@services';
 import apiRoutes from './apiRoutes';
 
 export const api = {
-    getPopularMovies: async () => {
-        const response = await httpService.get(apiRoutes.getPopularMovies());
+    getPopularMovies: async page => {
+        const response = await httpService.get(apiRoutes.getPopularMovies(), { page });
 
         return response.data;
     },
-    getTopMovies: async () => {
-        const response = await httpService.get(apiRoutes.getTopMovies());
+    getTopMovies: async page => {
+        const response = await httpService.get(apiRoutes.getTopMovies(), { page });
 
         return response.data;
     },
-    getUpcomingMovies: async () => {
-        const response = await httpService.get(apiRoutes.getUpcomingMovies());
+    getUpcomingMovies: async page => {
+        const response = await httpService.get(apiRoutes.getUpcomingMovies(), { page });
 
         return response.data;
     },
-    getNowInTheCinema: async () => {
+    getNowInTheCinema: async page => {
         const response = await httpService.get(apiRoutes.getNowInTheCinema(), {
             region: 'UA',
+            page,
         });
 
         return response.data;

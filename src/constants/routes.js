@@ -4,4 +4,5 @@ export const ROUTES = {
     login: '/login',
     savedList: '/saved-list',
     search: '/search',
+    category: '/category',
 };

@@ -3,6 +3,7 @@ import movieLogo from '@images/movieLogo.svg';
 import saveIcon from '@images/save.svg';
 import { Link } from 'react-router-dom';
 import { ROUTES, CATEGORIES } from '@constants';
+import { getCapitalize } from '@helpers';
 import { InputSearch, Button } from '@sharedComponents';
 import useHeaderState from './useHeaderState';
 import './index.scss';
@@ -17,6 +18,7 @@ export const Header = () => {
         searchValue,
         handleChange,
         redirectToSearchPage,
+        redirectToCategoryPage,
     } = useHeaderState();
 
     return (
@@ -28,11 +30,15 @@ export const Header = () => {
                 <nav className="nav">
                     <ul className="nav__list">
                         <li className="nav__list-item">
-                            <strong className="nav__list-item-title">Movies</strong>
+                            <strong>Movies</strong>
                             <ul className="nav__options">
-                                {CATEGORIES.map((category, i) => (
-                                    <li className="nav__options-item" key={i}>
-                                        <Link to="/">{category}</Link>
+                                {Object.values(CATEGORIES).map((category, index) => (
+                                    <li
+                                        onClick={e => redirectToCategoryPage(e, category)}
+                                        className="nav__options-item"
+                                        key={index}
+                                    >
+                                        {getCapitalize(category)}
                                     </li>
                                 ))}
                             </ul>
