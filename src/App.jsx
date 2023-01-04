@@ -8,6 +8,7 @@ import {
     Layout,
     SearchMoviesPage,
     SavedMoviesList,
+    CategoryPage,
 } from '@components';
 import { ROUTES } from '@constants';
 import { ContextAuthProvider, ContextMoviesProvider, ContextSavedMoviesProvider } from '@context';
@@ -27,6 +28,7 @@ function App() {
                             <Route path={ROUTES.login} element={<LoginPage />} />
                             <Route path={ROUTES.search} element={<SearchMoviesPage />} />
                             <Route path={ROUTES.savedList} element={<SavedMoviesList />} />
+                            <Route path={ROUTES.category} element={<CategoryPage />} />
                         </Route>
                     </Routes>
                 </ContextSavedMoviesProvider>

@@ -16,7 +16,7 @@ export const useSearchMovies = (searchValue, setSearchMovies) => {
     }
 
     useEffect(() => {
-        getSearchMovies(searchValue, setSearchMovies, setIsFetching);
+        getSearchMovies(searchValue, setSearchMovies);
     }, [searchValue]);
 
     return { isFetching };

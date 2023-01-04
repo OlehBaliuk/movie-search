@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { CATEGORIES } from '@constants';
 import { getMoviesForCategory } from '@helpers';
 
 const ContextMovies = createContext();
@@ -8,8 +9,8 @@ const ContextMoviesProvider = props => {
     const [topMovies, setTopMovies] = useState([]);
 
     useEffect(() => {
-        getMoviesForCategory('Popular', setPopularMovies);
-        getMoviesForCategory('Top', setTopMovies);
+        getMoviesForCategory(CATEGORIES.popular, setPopularMovies);
+        getMoviesForCategory(CATEGORIES.top, setTopMovies);
     }, []);
 
     const value = { popularMovies, topMovies };

@@ -1,1 +1,6 @@
-export const CATEGORIES = ['Popular', 'Top', 'Upcoming', 'Now in the cinema'];
+export const CATEGORIES = {
+    popular: 'popular',
+    top: 'top',
+    upcoming: 'upcoming',
+    nowInTheCinema: 'now-in-the-cinema',
+};
