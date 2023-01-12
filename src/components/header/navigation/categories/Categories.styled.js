@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const CategoriesContainer = styled.div`
     display: flex;
@@ -40,4 +40,12 @@ const NavList = styled.ul`
     }
 `;
 
-export { CategoriesContainer, Logo, Nav, NavOptions, NavList };
+const List = styled.li`
+    ${props =>
+        props.active === 'true' &&
+        css`
+            color: black;
+        `}
+`;
+
+export { CategoriesContainer, Logo, Nav, NavOptions, NavList, List };
