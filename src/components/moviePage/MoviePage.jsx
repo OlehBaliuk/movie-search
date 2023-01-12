@@ -3,10 +3,18 @@ import saveIconOrange from '@images/saveIconOrange.svg';
 import saveIconWhite from '@images/saveIconWhite.svg';
 import { useParams } from 'react-router-dom';
 import { api } from '@api';
-import { ActorCard } from '@components';
 import { useSavedList } from '@customHooks';
 import { getMoviePosterPath } from '@helpers';
-import './index.scss';
+import { ActorCard } from '@sharedComponents';
+import { LargeHeader, MediumHeader, FlexContainer, Span, SaveIconWrapper } from '@sharedStyledComponents';
+import {
+    MovieInfoContainer,
+    PosterContainer,
+    Poster,
+    FlexContainerStyled,
+    GenresContainer,
+    CastContainer,
+} from './MoviePage.styled';
 
 export const MoviePage = () => {
     const { id } = useParams();
@@ -31,45 +39,42 @@ export const MoviePage = () => {
     }, [id]);
 
     return (
-        <main>
-            <div className="movie-info">
-                <div className="movie-info__poster-wrapper">
+        <>
+            <MovieInfoContainer>
+                <PosterContainer>
                     {user && (
-                        <div className="save-icon-wrapper">
+                        <SaveIconWrapper>
                             <img
                                 onClick={isSavedMovie ? deleteMovieFromSavedList : addMovieToSavedList}
-                                className="save-icon"
                                 src={isSavedMovie ? saveIconOrange : saveIconWhite}
                                 alt="saveIcon"
                             />
-                        </div>
+                        </SaveIconWrapper>
                     )}
-                    <img className="movie-info__poster" src={getMoviePosterPath(movie.poster_path)} alt="poster" />
-                </div>
+                    <Poster src={getMoviePosterPath(movie.poster_path)} alt="poster" />
+                </PosterContainer>
 
-                <div className="movie-info__text-wrapper">
-                    <h1 className="movie-info__title">{movie.title}</h1>
-                    <div className="movie-info__genres-wrapper">
+                <FlexContainerStyled align="flex-start" direction="column">
+                    <LargeHeader color="black">{movie.title}</LargeHeader>
+                    <GenresContainer>
                         {movie.genres?.map(genre => (
-                            <span className="movie-info__genre" key={genre.id}>
-                                {genre.name}
-                            </span>
+                            <Span key={genre.id}>{genre.name}</Span>
                         ))}
-                    </div>
-                    <span className="movie-info__rate">Rate:{movie.vote_average}</span>
-                    <span className="movie-info__description-title">Description:</span>
-                    <div className="movie-info__description">{movie.overview}</div>
-                </div>
-            </div>
+                    </GenresContainer>
+                    <Span fontSize="20px">Rate:{movie.vote_average}</Span>
+                    <Span fontSize="20px">Description:</Span>
+                    <FlexContainer textAlign="start">{movie.overview}</FlexContainer>
+                </FlexContainerStyled>
+            </MovieInfoContainer>
 
-            <div className="cast">
-                <h2 className="cast__title">Cast</h2>
-                <div className="actors">
+            <CastContainer>
+                <MediumHeader color="black">Cast</MediumHeader>
+                <FlexContainer>
                     {cast.slice(0, 9).map(actor => (
                         <ActorCard actor={actor} key={actor.id} />
                     ))}
-                </div>
-            </div>
-        </main>
+                </FlexContainer>
+            </CastContainer>
+        </>
     );
 };

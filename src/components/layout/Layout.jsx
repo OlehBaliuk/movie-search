@@ -1,12 +1,17 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '@components';
+import { LayoutContainer, Main, MainContainer } from './Layout.styled';
 
 export const Layout = () => {
     return (
-        <div className="App">
+        <LayoutContainer>
             <Header />
-            <Outlet />
-        </div>
+            <Main>
+                <MainContainer>
+                    <Outlet />
+                </MainContainer>
+            </Main>
+        </LayoutContainer>
     );
 };

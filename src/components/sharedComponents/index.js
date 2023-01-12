@@ -1,8 +1,8 @@
-export { Button } from './button/Button';
-export { CustomSlider } from './customSlider/CustomSlider';
-export { Form } from './form/Form';
-export { InputSearch } from './inputSearch/InputSearch';
-export { ErrorModal } from './modal/ErrorModal';
+export { ActorCard } from './actorCard/ActorCard';
+export { CustomButton } from './customButton/CustomButton';
+export { Slider } from './slider/Slider';
+export { ErrorModal } from './errorModal/ErrorModal';
 export { Preloader } from './preloader/Preloader';
-export { Input } from './input/Input';
+export { CustomInput } from './customInput/CustomInput';
 export { Paginate } from './paginate/Paginate';
+export { MovieCard } from './movieCard/MovieCard';

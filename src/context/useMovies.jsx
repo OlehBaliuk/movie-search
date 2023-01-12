@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { getMoviesForCategory } from '@api';
 import { CATEGORIES } from '@constants';
-import { getMoviesForCategory } from '@helpers';
 
 const ContextMovies = createContext();
 

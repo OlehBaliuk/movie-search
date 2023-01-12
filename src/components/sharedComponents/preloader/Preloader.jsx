@@ -1,7 +1,7 @@
 import React from 'react';
 import loading from '@images/loading.svg';
-import './index.scss';
+import { PreloaderContainer } from './Preloader.styled';
 
 export const Preloader = () => {
-    return <img className="preloader" src={loading} alt="preloader" />;
+    return <PreloaderContainer src={loading} alt="preloader" />;
 };

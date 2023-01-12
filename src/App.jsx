@@ -7,13 +7,12 @@ import {
     LoginPage,
     Layout,
     SearchMoviesPage,
-    SavedMoviesList,
+    SavedMoviesPage,
     CategoryPage,
 } from '@components';
 import { ROUTES } from '@constants';
 import { ContextAuthProvider, ContextMoviesProvider, ContextSavedMoviesProvider } from '@context';
 import '@firebaseConfig';
-import './App.scss';
 
 function App() {
     return (
@@ -27,7 +26,7 @@ function App() {
                             <Route path={ROUTES.registration} element={<RegistrationPage />} />
                             <Route path={ROUTES.login} element={<LoginPage />} />
                             <Route path={ROUTES.search} element={<SearchMoviesPage />} />
-                            <Route path={ROUTES.savedList} element={<SavedMoviesList />} />
+                            <Route path={ROUTES.savedList} element={<SavedMoviesPage />} />
                             <Route path={ROUTES.category} element={<CategoryPage />} />
                         </Route>
                     </Routes>
