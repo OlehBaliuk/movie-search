@@ -1,11 +1,15 @@
 import React from 'react';
 import movieLogo from '@images/movieLogo.svg';
 import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { CATEGORIES } from '@constants';
 import { getCapitalize } from '@helpers';
-import { CategoriesContainer, Logo, Nav, NavOptions, NavList } from './Categories.styled';
+import { CategoriesContainer, Logo, Nav, NavOptions, NavList, List } from './Categories.styled';
 
 const Categories = ({ redirectToCategoryPage }) => {
+    const [searchParams] = useSearchParams();
+    const categoryQuery = searchParams.get('category');
+
     return (
         <CategoriesContainer>
             <Link to="/">
@@ -17,9 +21,13 @@ const Categories = ({ redirectToCategoryPage }) => {
                         <strong>Movies</strong>
                         <NavOptions>
                             {Object.values(CATEGORIES).map((category, index) => (
-                                <li onClick={e => redirectToCategoryPage(e, category)} key={index}>
+                                <List
+                                    active={`${category === categoryQuery}`}
+                                    onClick={e => redirectToCategoryPage(e, category)}
+                                    key={index}
+                                >
                                     {getCapitalize(category)}
-                                </li>
+                                </List>
                             ))}
                         </NavOptions>
                     </li>
