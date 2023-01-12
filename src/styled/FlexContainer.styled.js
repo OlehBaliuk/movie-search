@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const FlexContainer = styled.div`
     display: flex;
@@ -7,4 +7,10 @@ export const FlexContainer = styled.div`
     flex-wrap: ${props => props.wpar || 'wrap'};
     flex-direction: ${props => props.direction || 'row'};
     text-align: ${props => props.textAlign || 'center'};
+
+    ${props =>
+        props.padding &&
+        css`
+            padding: ${props.padding};
+        `}
 `;

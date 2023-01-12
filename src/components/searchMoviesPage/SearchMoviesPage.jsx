@@ -32,7 +32,7 @@ export const SearchMoviesPage = () => {
                 placeholder="Search..."
             />
             <LargeHeader>Search result</LargeHeader>
-            <FlexContainer>
+            <FlexContainer padding="0 15%">
                 {movies?.map(movie => (
                     <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
                         <MovieCard movie={movie} />

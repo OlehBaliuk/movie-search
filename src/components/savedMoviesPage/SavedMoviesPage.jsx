@@ -11,7 +11,7 @@ export const SavedMoviesPage = () => {
     return (
         <>
             <LargeHeader>Saved movies</LargeHeader>
-            <FlexContainer>
+            <FlexContainer padding="0 15%">
                 {savedMovies
                     .sort((prev, next) => next.savedTimestamp - prev.savedTimestamp)
                     .map(movie => (
