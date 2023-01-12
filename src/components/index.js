@@ -1,11 +1,9 @@
 export { Header } from './header/Header';
 export { Layout } from './layout/Layout';
-export { LoginPage } from './loginPage/LoginPage';
+export { LoginPage } from './auth/loginPage/LoginPage';
 export { MainPage } from './mainPage/MainPage';
-export { MovieCard } from './movieCard/MovieCard';
 export { MoviePage } from './moviePage/MoviePage';
-export { RegistrationPage } from './registrationPage/RegistrationPage';
-export { SavedMoviesList } from './savedMoviesList/SavedMoviesList';
+export { RegistrationPage } from './auth/registrationPage/RegistrationPage';
+export { SavedMoviesPage } from './savedMoviesPage/SavedMoviesPage';
 export { SearchMoviesPage } from './searchMoviesPage/SearchMoviesPage';
-export { ActorCard } from './actorCard/ActorCard';
 export { CategoryPage } from './categoryPage/CategoryPage';

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { MovieCard } from '@components';
 import { ROUTES } from '@constants';
 import { useSearchMovies } from '@customHooks';
-import { Input } from '@sharedComponents';
-import './index.scss';
+import { MovieCard } from '@sharedComponents';
+import { LargeHeader, FlexContainer } from '@sharedStyledComponents';
+import { StyledCustomInput } from './SearchMoviesPage.styled';
 
 export const SearchMoviesPage = () => {
     const [movies, setMovies] = useState([]);
@@ -23,24 +23,22 @@ export const SearchMoviesPage = () => {
     };
 
     return (
-        <main>
-            <div className="main-content-wrapper">
-                <Input
-                    handleSubmit={handleSubmit}
-                    handleChange={handleChange}
-                    value={value}
-                    type="search"
-                    placeholder="Search..."
-                />
-                <h1>Search result</h1>
-                <div className="search-result">
-                    {movies?.map(movie => (
-                        <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
-                            <MovieCard movie={movie} />
-                        </Link>
-                    ))}
-                </div>
-            </div>
-        </main>
+        <>
+            <StyledCustomInput
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                value={value}
+                type="search"
+                placeholder="Search..."
+            />
+            <LargeHeader>Search result</LargeHeader>
+            <FlexContainer>
+                {movies?.map(movie => (
+                    <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
+                        <MovieCard movie={movie} />
+                    </Link>
+                ))}
+            </FlexContainer>
+        </>
     );
 };
