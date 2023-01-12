@@ -11,7 +11,7 @@ export const CategoryPage = () => {
     return (
         <>
             <LargeHeader>Films by "{fixCategoryTitle}" category</LargeHeader>
-            <FlexContainer>
+            <FlexContainer padding="0 15%">
                 {movies?.map(movie => (
                     <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
                         <MovieCard movie={movie} />
