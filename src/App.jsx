@@ -1,4 +1,6 @@
 import React from 'react';
+import { store } from '@store';
+import { Provider } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import {
     RegistrationPage,
@@ -11,13 +13,13 @@ import {
     CategoryPage,
 } from '@components';
 import { ROUTES } from '@constants';
-import { ContextAuthProvider, ContextMoviesProvider, ContextSavedMoviesProvider } from '@context';
+import { ContextMoviesProvider, ContextSavedMoviesProvider } from '@context';
 import '@firebaseConfig';
 
 function App() {
     return (
-        <ContextMoviesProvider>
-            <ContextAuthProvider>
+        <Provider store={store}>
+            <ContextMoviesProvider>
                 <ContextSavedMoviesProvider>
                     <Routes>
                         <Route path="/" element={<Layout />}>
@@ -31,8 +33,8 @@ function App() {
                         </Route>
                     </Routes>
                 </ContextSavedMoviesProvider>
-            </ContextAuthProvider>
-        </ContextMoviesProvider>
+            </ContextMoviesProvider>
+        </Provider>
     );
 }
 

@@ -12,7 +12,8 @@
             "@sharedComponents": ["src/components/sharedComponents"],
             "@customHooks": ["src/customHooks"],
             "@firebaseConfig": ["src/firebaseConfig"],
-            "@sharedStyledComponents": ["src/styled"]
+            "@sharedStyledComponents": ["src/styled"],
+            "@store": ["src/store"]
         }
     }
 }

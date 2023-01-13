@@ -1,12 +1,12 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { useAuth } from '@context';
+import { useSelector } from 'react-redux';
 import { db } from '@firebaseConfig';
 
 const ContextSavedMovies = createContext();
 
 const ContextSavedMoviesProvider = props => {
-    const { user } = useAuth();
+    const user = useSelector(state => state.user);
     const [savedMovies, setSavedMovies] = useState([]);
 
     const getSavedMovies = async () => {
@@ -24,10 +24,10 @@ const ContextSavedMoviesProvider = props => {
     };
 
     useEffect(() => {
-        if (user) {
+        if (user.email) {
             getSavedMovies();
         }
-    }, [user]);
+    }, [user.email]);
 
     const value = { savedMovies };
 

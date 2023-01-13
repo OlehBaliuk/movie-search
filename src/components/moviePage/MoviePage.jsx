@@ -42,7 +42,7 @@ export const MoviePage = () => {
         <>
             <MovieInfoContainer>
                 <PosterContainer>
-                    {user && (
+                    {user.email && (
                         <SaveIconWrapper>
                             <img
                                 onClick={isSavedMovie ? deleteMovieFromSavedList : addMovieToSavedList}
