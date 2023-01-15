@@ -13,7 +13,9 @@
             "@customHooks": ["src/customHooks"],
             "@firebaseConfig": ["src/firebaseConfig"],
             "@sharedStyledComponents": ["src/styled"],
-            "@store": ["src/store"]
+            "@store": ["src/store"],
+            "@actionsSavedMoviesReducer": ["src/store/savedMoviesReducer"],
+            "@actionsUserReducer": ["src/store/userReducer"]
         }
     }
 }

@@ -1,18 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@constants';
-import { useSavedMovies } from '@context';
 import { MovieCard } from '@sharedComponents';
 import { LargeHeader, FlexContainer } from '@sharedStyledComponents';
 
 export const SavedMoviesPage = () => {
-    const { savedMovies } = useSavedMovies();
+    const { movies } = useSelector(state => state.savedMovies);
+    const moviesToMap = [...movies];
 
     return (
         <>
             <LargeHeader>Saved movies</LargeHeader>
             <FlexContainer padding="0 15%">
-                {savedMovies
+                {moviesToMap
                     .sort((prev, next) => next.savedTimestamp - prev.savedTimestamp)
                     .map(movie => (
                         <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>

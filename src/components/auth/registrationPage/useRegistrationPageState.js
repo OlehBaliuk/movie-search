@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addUserToState } from '@store';
+import { addUserToState } from '@actionsUserReducer';
 import { getAuth } from 'firebase/auth';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useDispatch } from 'react-redux';

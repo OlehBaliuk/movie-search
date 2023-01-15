@@ -1,8 +1,8 @@
 import React from 'react';
 import saveIcon from '@images/save.svg';
-import { clearUserState } from '@store';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { clearUserState } from '@actionsUserReducer';
 import { ROUTES } from '@constants';
 import { CustomButton } from '@sharedComponents';
 import { NavAuthContainer, Text, SaveIcon, StyledAuthLink } from './Authorization.styled';
