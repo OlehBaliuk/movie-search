@@ -1,1 +1,1 @@
-export { addSavedMoviesToState, clearSavedMoviesState } from './savedMoviesSlice';
+export { addSavedMoviesToState } from './savedMoviesSlice';

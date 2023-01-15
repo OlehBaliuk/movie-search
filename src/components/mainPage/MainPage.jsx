@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '@constants';
-import { useMovies } from '@context';
+import { getMoviesForCategory } from '@api';
+import { ROUTES, CATEGORIES } from '@constants';
 import { Slider, MovieCard } from '@sharedComponents';
 import { LargeHeader } from '@sharedStyledComponents';
 import { MoviesContainer } from './MainPage.styled';
 
 export const MainPage = () => {
-    const { popularMovies, topMovies } = useMovies();
+    const [popularMovies, setPopularMovies] = useState([]);
+    const [topMovies, setTopMovies] = useState([]);
+
+    const getInitialData = () => {
+        try {
+            getMoviesForCategory(CATEGORIES.popular, setPopularMovies);
+            getMoviesForCategory(CATEGORIES.top, setTopMovies);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getInitialData();
+    }, []);
 
     return (
         <>

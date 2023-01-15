@@ -11,12 +11,9 @@ export const savedMoviesSlice = createSlice({
         addSavedMoviesToState: (state, action) => {
             state.movies = action.payload;
         },
-        clearSavedMoviesState: state => {
-            state.movies = [];
-        },
     },
 });
 
-export const { addSavedMoviesToState, clearSavedMoviesState } = savedMoviesSlice.actions;
+export const { addSavedMoviesToState } = savedMoviesSlice.actions;
 
 export default savedMoviesSlice.reducer;
