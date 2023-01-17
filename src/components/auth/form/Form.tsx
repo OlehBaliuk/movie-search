@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { CustomButton, Preloader } from '@sharedComponents';
 import { FormContainer, Input } from './Form.styled';
 
-export const Form = ({ handleSubmit, registration, loading }) => {
+type FormProps = {
+    handleSubmit: (login: string, password: string) => void;
+    isRegistration?: boolean;
+    loading: boolean;
+};
+
+export const Form = ({ handleSubmit, isRegistration, loading }: FormProps) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
 
-    const onSubmit = e => {
+    const onSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         handleSubmit(login, password);
     };
@@ -19,25 +25,30 @@ export const Form = ({ handleSubmit, registration, loading }) => {
         <Preloader />
     ) : (
         <FormContainer>
-            <Input type="text" value={login} placeholder="Login" onChange={e => setLogin(e.target.value)} />
+            <Input
+                type="text"
+                value={login}
+                placeholder="Login"
+                onChange={(e: ChangeEvent<HTMLInputElement>): void => setLogin(e.target.value)}
+            />
             <Input
                 type="password"
                 placeholder="Password"
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>): void => setPassword(e.target.value)}
             />
-            {registration && (
+            {isRegistration && (
                 <Input
                     type="password"
                     placeholder="Repeat password"
                     value={repeatPassword}
-                    onChange={e => setRepeatPassword(e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>): void => setRepeatPassword(e.target.value)}
                 />
             )}
             <CustomButton
                 title={'Submit'}
                 handleClick={onSubmit}
-                isDisable={registration ? isDisableSubmitButtonRegistration : isDisableSubmitButtonLogin}
+                isDisable={isRegistration ? isDisableSubmitButtonRegistration : isDisableSubmitButtonLogin}
             />
         </FormContainer>
     );

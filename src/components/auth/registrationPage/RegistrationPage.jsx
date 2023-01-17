@@ -10,7 +10,7 @@ export const RegistrationPage = () => {
     return (
         <>
             <LargeHeader>Registration</LargeHeader>
-            <Form handleSubmit={handleRegistration} registration={true} loading={loading} />
+            <Form handleSubmit={handleRegistration} isRegistration loading={loading} />
             {error && <ErrorModal active={modalActive} setActive={setModalActive} message={error.message} />}
         </>
     );
