@@ -61,7 +61,7 @@ export const MoviePage = () => {
                             <Span key={genre.id}>{genre.name}</Span>
                         ))}
                     </GenresContainer>
-                    <Span fontSize="20px">Rate:{movie.vote_average}</Span>
+                    <Span fontSize="20px">Rate:{movie.vote_average?.toFixed(2)}</Span>
                     <Span fontSize="20px">Description:</Span>
                     <FlexContainer textAlign="start">{movie.overview}</FlexContainer>
                 </FlexContainerStyled>
