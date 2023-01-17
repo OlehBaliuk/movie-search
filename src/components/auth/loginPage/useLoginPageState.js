@@ -35,6 +35,7 @@ const useLoginPageState = () => {
                 querySnapshot.forEach(doc => {
                     list.push(doc.data());
                 });
+                list.sort((prev, next) => next.savedTimestamp - prev.savedTimestamp);
                 dispatch(addSavedMoviesToState(list));
             });
         } catch (error) {
