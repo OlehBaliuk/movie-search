@@ -8,17 +8,34 @@ import { addSavedMoviesToState } from '@actionsSavedMoviesReducer';
 import { addUserToState } from '@actionsUserReducer';
 import { db } from '@firebaseConfig';
 
+interface IHandleLoginResponse {
+    user: {
+        email: string;
+        uid: string;
+    };
+}
+
+interface IList {
+    id: number;
+    overview: string;
+    poster_path: string;
+    release_date: string;
+    savedTimestamp: number;
+    title: string;
+    vote_average: number;
+}
+
 const useLoginPageState = () => {
     const navigate = useNavigate();
     const auth = getAuth();
     const [signInWithEmailAndPassword, , loading, error] = useSignInWithEmailAndPassword(auth);
-    const [modalActive, setModalActive] = useState();
+    const [modalActive, setModalActive] = useState<boolean>(false);
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user);
+    const user = useSelector((state: any) => state.user);
 
-    const handleLogin = async (email, password) => {
+    const handleLogin = async (email: string, password: string) => {
         try {
-            const response = await signInWithEmailAndPassword(email, password);
+            const response = (await signInWithEmailAndPassword(email, password)) as IHandleLoginResponse;
 
             dispatch(addUserToState({ email: response.user.email, uid: response.user.uid }));
 
@@ -31,9 +48,9 @@ const useLoginPageState = () => {
     const getSavedMovies = async () => {
         try {
             onSnapshot(collection(db, `users/${user.uid}/savedMovies`), querySnapshot => {
-                const list = [];
+                const list: IList[] = [];
                 querySnapshot.forEach(doc => {
-                    list.push(doc.data());
+                    list.push(doc.data() as IList);
                 });
                 list.sort((prev, next) => next.savedTimestamp - prev.savedTimestamp);
                 dispatch(addSavedMoviesToState(list));

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, FC } from 'react';
 import { CustomButton, Preloader } from '@sharedComponents';
 import { FormContainer, Input } from './Form.styled';
 
@@ -8,7 +8,7 @@ type FormProps = {
     loading: boolean;
 };
 
-export const Form = ({ handleSubmit, isRegistration, loading }: FormProps) => {
+export const Form: FC<FormProps> = ({ handleSubmit, isRegistration, loading }) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
