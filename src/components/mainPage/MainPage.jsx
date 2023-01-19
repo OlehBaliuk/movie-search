@@ -3,19 +3,23 @@ import { Link } from 'react-router-dom';
 import { getMoviesForCategory } from '@api';
 import { ROUTES, CATEGORIES } from '@constants';
 import { Slider, MovieCard } from '@sharedComponents';
+import { ErrorModal } from '@sharedComponents';
 import { LargeHeader } from '@sharedStyledComponents';
 import { MoviesContainer } from './MainPage.styled';
 
 export const MainPage = () => {
     const [popularMovies, setPopularMovies] = useState([]);
     const [topMovies, setTopMovies] = useState([]);
+    const [modalActive, setModalActive] = useState();
+    const [error, setError] = useState();
 
-    const getInitialData = () => {
+    const getInitialData = async () => {
         try {
-            getMoviesForCategory(CATEGORIES.popular, setPopularMovies);
-            getMoviesForCategory(CATEGORIES.top, setTopMovies);
+            await getMoviesForCategory(CATEGORIES.popular, setPopularMovies);
+            await getMoviesForCategory(CATEGORIES.top, setTopMovies);
         } catch (error) {
-            console.log(error);
+            setError(error);
+            setModalActive(true);
         }
     };
 
@@ -46,6 +50,7 @@ export const MainPage = () => {
                     ))}
                 </Slider>
             </MoviesContainer>
+            <ErrorModal active={modalActive} setActive={setModalActive} message={error?.message} />
         </>
     );
 };

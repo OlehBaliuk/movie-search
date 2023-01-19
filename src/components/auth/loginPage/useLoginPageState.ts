@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { IAuthResponse } from '@interfaces';
 import { getAuth } from 'firebase/auth';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addSavedMoviesToState } from '@actionsSavedMoviesReducer';
+import { addSavedMoviesToState, saveErrorMessage } from '@actionsSavedMoviesReducer';
 import { addUserToState } from '@actionsUserReducer';
 import { db } from '@firebaseConfig';
+import { IAuthResponse } from '@interfaces';
 
 interface IList {
     id: number;
@@ -40,18 +40,20 @@ const useLoginPageState = () => {
     };
 
     const getSavedMovies = async () => {
-        try {
-            onSnapshot(collection(db, `users/${user.uid}/savedMovies`), querySnapshot => {
+        onSnapshot(
+            collection(db, `users/${user.uid}/savedMovies`),
+            querySnapshot => {
                 const list: IList[] = [];
                 querySnapshot.forEach(doc => {
                     list.push(doc.data() as IList);
                 });
                 list.sort((prev, next) => next.savedTimestamp - prev.savedTimestamp);
                 dispatch(addSavedMoviesToState(list));
-            });
-        } catch (error) {
-            console.log(error);
-        }
+            },
+            error => {
+                dispatch(saveErrorMessage(error.message));
+            },
+        );
     };
 
     useEffect(() => {

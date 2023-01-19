@@ -11,9 +11,12 @@ export const savedMoviesSlice = createSlice({
         addSavedMoviesToState: (state, action) => {
             state.movies = action.payload;
         },
+        saveErrorMessage: (state, action) => {
+            state.errorMessage = action.payload;
+        },
     },
 });
 
-export const { addSavedMoviesToState } = savedMoviesSlice.actions;
+export const { addSavedMoviesToState, saveErrorMessage } = savedMoviesSlice.actions;
 
 export default savedMoviesSlice.reducer;

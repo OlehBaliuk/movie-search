@@ -1,1 +1,1 @@
-export { addSavedMoviesToState } from './savedMoviesSlice';
+export { addSavedMoviesToState, saveErrorMessage } from './savedMoviesSlice';
