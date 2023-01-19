@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '@constants';
-import { useMovies } from '@context';
+import { getMoviesForCategory } from '@api';
+import { ROUTES, CATEGORIES } from '@constants';
 import { Slider, MovieCard } from '@sharedComponents';
+import { ErrorModal } from '@sharedComponents';
 import { LargeHeader } from '@sharedStyledComponents';
 import { MoviesContainer } from './MainPage.styled';
 
 export const MainPage = () => {
-    const { popularMovies, topMovies } = useMovies();
+    const [popularMovies, setPopularMovies] = useState([]);
+    const [topMovies, setTopMovies] = useState([]);
+    const [modalActive, setModalActive] = useState();
+    const [error, setError] = useState();
+
+    const getInitialData = async () => {
+        try {
+            await getMoviesForCategory(CATEGORIES.popular, setPopularMovies);
+            await getMoviesForCategory(CATEGORIES.top, setTopMovies);
+        } catch (error) {
+            setError(error);
+            setModalActive(true);
+        }
+    };
+
+    useEffect(() => {
+        getInitialData();
+    }, []);
 
     return (
         <>
@@ -32,6 +50,7 @@ export const MainPage = () => {
                     ))}
                 </Slider>
             </MoviesContainer>
+            <ErrorModal active={modalActive} setActive={setModalActive} message={error?.message} />
         </>
     );
 };

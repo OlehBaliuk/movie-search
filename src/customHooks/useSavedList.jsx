@@ -1,14 +1,14 @@
 import React from 'react';
-import { db } from '@firebaseConfig';
 import { setDoc, doc, deleteDoc } from 'firebase/firestore';
-import { useAuth, useSavedMovies } from '@context';
+import { useSelector } from 'react-redux';
+import { db } from '@firebaseConfig';
 import { getRequestPayload } from '@helpers';
 
 export const useSavedList = movie => {
-    const { user } = useAuth();
-    const { savedMovies } = useSavedMovies();
+    const user = useSelector(state => state.user);
+    const { movies } = useSelector(state => state.savedMovies);
 
-    const isSavedMovie = savedMovies.some(savedMovie => savedMovie.id === movie.id);
+    const isSavedMovie = movies.some(savedMovie => savedMovie.id === movie.id);
 
     const addMovieToSavedList = async e => {
         e.preventDefault();
