@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, createSearchParams, useLocation } from 'react-router-dom';
 import { ROUTES, SEARCH_INPUT_DISPLAY_BY_ROUTE } from '@constants';
 import { useSearchMovies } from '@customHooks';
+import { Movie } from '@interfaces';
 
 const useHeaderState = () => {
-    const user = useSelector(state => state.user);
+    const user = useSelector((state: any) => state.user);
     const [searchValue, setSearchValue] = useState('');
-    const [searchMovies, setSearchMovies] = useState(null);
+    const [searchMovies, setSearchMovies] = useState<Movie[] | null>(null);
     const { isFetching } = useSearchMovies(searchValue, setSearchMovies);
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,13 +17,13 @@ const useHeaderState = () => {
         return setSearchValue('');
     }, [location.pathname, location.search]);
 
-    const checkDisplayInputSearch = route => {
+    const checkDisplayInputSearch = (route: string): boolean => {
         return SEARCH_INPUT_DISPLAY_BY_ROUTE[route] ?? true;
     };
 
     const isSearchInputVisible = checkDisplayInputSearch(location.pathname);
 
-    const redirectToSearchPage = e => {
+    const redirectToSearchPage = (e: FormEvent<HTMLInputElement>) => {
         e.preventDefault();
 
         if (searchValue) {
@@ -33,11 +34,11 @@ const useHeaderState = () => {
         }
     };
 
-    const handleChange = e => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
     };
 
-    const redirectToCategoryPage = (e, category) => {
+    const redirectToCategoryPage = (e: FormEvent<HTMLInputElement>, category: string) => {
         e.preventDefault();
         navigate({
             pathname: ROUTES.category,
