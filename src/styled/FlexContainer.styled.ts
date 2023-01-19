@@ -1,15 +1,7 @@
 import styled, { css } from 'styled-components';
+import { FlexContainerProps } from './types';
 
-interface IFlexContainerProps {
-    justify?: string;
-    direction?: string;
-    wpar?: string;
-    align?: string;
-    textAlign?: string;
-    padding?: string;
-}
-
-export const FlexContainer = styled.div<IFlexContainerProps>`
+export const FlexContainer = styled.div<FlexContainerProps>`
     display: flex;
     justify-content: ${props => props.justify || 'center'};
     align-items: ${props => props.align || 'center'};

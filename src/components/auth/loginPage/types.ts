@@ -1,4 +1,4 @@
-interface Movie {
+interface List {
     id: number;
     overview: string;
     poster_path: string;
@@ -7,5 +7,4 @@ interface Movie {
     title: string;
     vote_average: number;
 }
-
-export type { Movie };
+export type { List };

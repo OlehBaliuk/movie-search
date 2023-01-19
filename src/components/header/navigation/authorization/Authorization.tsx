@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import saveIcon from '@images/save.svg';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,8 +6,9 @@ import { clearUserState } from '@actionsUserReducer';
 import { ROUTES } from '@constants';
 import { CustomButton } from '@sharedComponents';
 import { NavAuthContainer, Text, SaveIcon, StyledAuthLink } from './Authorization.styled';
+import { AuthorizationProps } from './types';
 
-const Authorization = ({ user }) => {
+const Authorization: FC<AuthorizationProps> = ({ user }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

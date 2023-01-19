@@ -1,19 +1,14 @@
-import React, { useState, ChangeEvent, FC } from 'react';
+import React, { useState, ChangeEvent, FC, SyntheticEvent } from 'react';
 import { CustomButton, Preloader } from '@sharedComponents';
 import { FormContainer, Input } from './Form.styled';
-
-type FormProps = {
-    handleSubmit: (login: string, password: string) => void;
-    isRegistration?: boolean;
-    loading: boolean;
-};
+import { FormProps } from './types';
 
 export const Form: FC<FormProps> = ({ handleSubmit, isRegistration, loading }) => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [repeatPassword, setRepeatPassword] = useState<string>('');
 
-    const onSubmit = (e: React.SyntheticEvent) => {
+    const onSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
         handleSubmit(login, password);
     };

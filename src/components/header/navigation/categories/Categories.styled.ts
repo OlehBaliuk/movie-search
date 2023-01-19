@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { ListProps } from './types';
 
 const CategoriesContainer = styled.div`
     display: flex;
@@ -40,7 +41,7 @@ const NavList = styled.ul`
     }
 `;
 
-const List = styled.li`
+const List = styled.li<ListProps>`
     ${props =>
         props.active === 'true' &&
         css`

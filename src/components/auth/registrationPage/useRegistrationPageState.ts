@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { IAuthResponse } from '@interfaces';
 import { getAuth } from 'firebase/auth';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addUserToState } from '@actionsUserReducer';
+import { AuthResponse } from '@interfaces';
 
 const useRegistrationPageState = () => {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const useRegistrationPageState = () => {
 
     const handleRegistration = async (email: string, password: string) => {
         try {
-            const response = (await createUserWithEmailAndPassword(email, password)) as IAuthResponse;
+            const response = (await createUserWithEmailAndPassword(email, password)) as AuthResponse;
 
             dispatch(addUserToState({ email: response.user.email, uid: response.user.uid }));
 

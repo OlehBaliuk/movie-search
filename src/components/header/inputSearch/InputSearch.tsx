@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@constants';
+import { Movie } from '@interfaces';
 import { CustomInput } from '@sharedComponents';
 import { InputSearchContainer, SearchList } from './InputSearch.styled';
+import { InputSearchProps } from './types';
 
-export const InputSearch = ({
+export const InputSearch: FC<InputSearchProps> = ({
     searchValue,
     searchMovies,
     handleChange,
@@ -24,7 +26,7 @@ export const InputSearch = ({
             />
             {searchValue && !isFetching && (
                 <SearchList>
-                    {searchMovies?.map(movie => (
+                    {searchMovies?.map((movie: Movie) => (
                         <li key={movie.id}>
                             <Link to={`${ROUTES.movie}/${movie.id}`}>{movie.title}</Link>
                         </li>

@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Input } from './Input.styled';
+import { CustomInputProps } from './types';
 
-export const CustomInput = ({ handleSubmit, handleChange, value, type, placeholder, className }) => {
+export const CustomInput: FC<CustomInputProps> = ({
+    handleSubmit,
+    handleChange,
+    value,
+    type,
+    placeholder,
+    className,
+}) => {
     return (
         <form onSubmit={handleSubmit}>
             <Input

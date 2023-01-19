@@ -1,8 +1,8 @@
-interface IAuthResponse {
+interface AuthResponse {
     user: {
         email: string;
         uid: string;
     };
 }
 
-export type { IAuthResponse };
+export type { AuthResponse };

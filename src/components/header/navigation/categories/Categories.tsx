@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import movieLogo from '@images/movieLogo.svg';
 import { Link } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { CATEGORIES } from '@constants';
 import { getCapitalize } from '@helpers';
 import { CategoriesContainer, Logo, Nav, NavOptions, NavList, List } from './Categories.styled';
+import { CategoriesProps } from './types';
 
-const Categories = ({ redirectToCategoryPage }) => {
+const Categories: FC<CategoriesProps> = ({ redirectToCategoryPage }) => {
     const [searchParams] = useSearchParams();
     const categoryQuery = searchParams.get('category');
 

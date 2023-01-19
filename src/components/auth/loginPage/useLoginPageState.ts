@@ -7,17 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { addSavedMoviesToState, saveErrorMessage } from '@actionsSavedMoviesReducer';
 import { addUserToState } from '@actionsUserReducer';
 import { db } from '@firebaseConfig';
-import { IAuthResponse } from '@interfaces';
-
-interface IList {
-    id: number;
-    overview: string;
-    poster_path: string;
-    release_date: string;
-    savedTimestamp: number;
-    title: string;
-    vote_average: number;
-}
+import { AuthResponse } from '@interfaces';
+import { List } from './types';
 
 const useLoginPageState = () => {
     const navigate = useNavigate();
@@ -29,7 +20,7 @@ const useLoginPageState = () => {
 
     const handleLogin = async (email: string, password: string) => {
         try {
-            const response = (await signInWithEmailAndPassword(email, password)) as IAuthResponse;
+            const response = (await signInWithEmailAndPassword(email, password)) as AuthResponse;
 
             dispatch(addUserToState({ email: response.user.email, uid: response.user.uid }));
 
@@ -43,9 +34,9 @@ const useLoginPageState = () => {
         onSnapshot(
             collection(db, `users/${user.uid}/savedMovies`),
             querySnapshot => {
-                const list: IList[] = [];
+                const list: List[] = [];
                 querySnapshot.forEach(doc => {
-                    list.push(doc.data() as IList);
+                    list.push(doc.data() as List);
                 });
                 list.sort((prev, next) => next.savedTimestamp - prev.savedTimestamp);
                 dispatch(addSavedMoviesToState(list));
