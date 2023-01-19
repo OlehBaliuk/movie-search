@@ -4,7 +4,7 @@ import { getMoviesForCategory } from '@api';
 
 const useCategoryPageState = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const categoryQuery = searchParams.get('category');
+    const categoryQuery = searchParams.get('category') as string;
     const pageQuery = searchParams.get('page') ?? 1;
     const [movies, setMovies] = useState([]);
     const [pageCount, setPageCount] = useState();
@@ -14,7 +14,7 @@ const useCategoryPageState = () => {
         getMoviesForCategory(categoryQuery, setMovies, pageQuery, setPageCount);
     }, [categoryQuery, pageQuery]);
 
-    const handlePageClick = e => {
+    const handlePageClick = (e: any) => {
         setSearchParams({ category: categoryQuery, page: e.selected + 1 });
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     };

@@ -3,7 +3,7 @@ import arrowLeft from '@images/arrowLeft.svg';
 import arrowRight from '@images/arrowRight.svg';
 import { StyledReactPaginate } from './Paginate.styled';
 
-export const Paginate = ({ pageQuery, pageCount, handlePageClick, className }) => {
+export const Paginate = ({ pageQuery, pageCount, handlePageClick }) => {
     return (
         <StyledReactPaginate
             forcePage={pageQuery - 1}

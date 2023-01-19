@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IAuthResponse } from '@interfaces';
 import { getAuth } from 'firebase/auth';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -7,13 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { addSavedMoviesToState } from '@actionsSavedMoviesReducer';
 import { addUserToState } from '@actionsUserReducer';
 import { db } from '@firebaseConfig';
-
-interface IHandleLoginResponse {
-    user: {
-        email: string;
-        uid: string;
-    };
-}
 
 interface IList {
     id: number;
@@ -35,7 +29,7 @@ const useLoginPageState = () => {
 
     const handleLogin = async (email: string, password: string) => {
         try {
-            const response = (await signInWithEmailAndPassword(email, password)) as IHandleLoginResponse;
+            const response = (await signInWithEmailAndPassword(email, password)) as IAuthResponse;
 
             dispatch(addUserToState({ email: response.user.email, uid: response.user.uid }));
 

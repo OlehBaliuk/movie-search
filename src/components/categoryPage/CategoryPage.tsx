@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@constants';
+import { IMovie } from '@interfaces';
 import { Paginate, MovieCard } from '@sharedComponents';
 import { LargeHeader, FlexContainer } from '@sharedStyledComponents';
 import useCategoryPageState from './useCategoryPageState';
@@ -12,7 +13,7 @@ export const CategoryPage = () => {
         <>
             <LargeHeader>Films by "{fixCategoryTitle}" category</LargeHeader>
             <FlexContainer padding="0 15%">
-                {movies?.map(movie => (
+                {movies?.map((movie: IMovie) => (
                     <Link to={`${ROUTES.movie}/${movie.id}`} key={movie.id}>
                         <MovieCard movie={movie} />
                     </Link>

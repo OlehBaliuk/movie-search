@@ -15,7 +15,8 @@
             "@sharedStyledComponents": ["src/styled"],
             "@store": ["src/store"],
             "@actionsSavedMoviesReducer": ["src/store/savedMoviesReducer"],
-            "@actionsUserReducer": ["src/store/userReducer"]
+            "@actionsUserReducer": ["src/store/userReducer"],
+            "@interfaces": ["src/interfaces"]
         }
     }
 }

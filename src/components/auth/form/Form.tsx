@@ -9,9 +9,9 @@ type FormProps = {
 };
 
 export const Form: FC<FormProps> = ({ handleSubmit, isRegistration, loading }) => {
-    const [login, setLogin] = useState('');
-    const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
+    const [login, setLogin] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [repeatPassword, setRepeatPassword] = useState<string>('');
 
     const onSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
