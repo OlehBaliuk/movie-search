@@ -11,7 +11,7 @@ export const MovieCard = ({ movie }) => {
 
     return (
         <MovieCardContainer>
-            {user && (
+            {user.email && (
                 <SaveIconWrapper>
                     <img
                         onClick={isSavedMovie ? deleteMovieFromSavedList : addMovieToSavedList}

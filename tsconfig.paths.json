@@ -12,7 +12,10 @@
             "@sharedComponents": ["src/components/sharedComponents"],
             "@customHooks": ["src/customHooks"],
             "@firebaseConfig": ["src/firebaseConfig"],
-            "@sharedStyledComponents": ["src/styled"]
+            "@sharedStyledComponents": ["src/styled"],
+            "@store": ["src/store"],
+            "@actionsSavedMoviesReducer": ["src/store/savedMoviesReducer"],
+            "@actionsUserReducer": ["src/store/userReducer"]
         }
     }
 }

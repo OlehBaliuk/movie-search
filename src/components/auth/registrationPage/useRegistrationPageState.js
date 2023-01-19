@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
-import { useAuth } from '@context/useAuth';
+import { addUserToState } from '@actionsUserReducer';
 import { getAuth } from 'firebase/auth';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const useRegistrationPageState = () => {
     const navigate = useNavigate();
     const auth = getAuth();
-    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
-    const { setUser } = useAuth();
+    const [createUserWithEmailAndPassword, , loading, error] = useCreateUserWithEmailAndPassword(auth);
     const [modalActive, setModalActive] = useState();
+    const dispatch = useDispatch();
 
     const handleRegistration = async (email, password) => {
         try {
             const response = await createUserWithEmailAndPassword(email, password);
-            setUser({ email: response.user.email, uid: response.user.uid });
+
+            dispatch(addUserToState({ email: response.user.email, uid: response.user.uid }));
+
             navigate('/');
         } catch {
             setModalActive(true);

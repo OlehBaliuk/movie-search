@@ -9,7 +9,6 @@ export const Header = () => {
     const {
         isSearchInputVisible,
         user,
-        setUser,
         searchMovies,
         isFetching,
         searchValue,
@@ -34,7 +33,7 @@ export const Header = () => {
                 />
             )}
 
-            <Authorization user={user} setUser={setUser} />
+            <Authorization user={user} />
         </HeaderContainer>
     );
 };

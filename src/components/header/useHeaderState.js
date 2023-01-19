@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, createSearchParams, useLocation } from 'react-router-dom';
 import { ROUTES, SEARCH_INPUT_DISPLAY_BY_ROUTE } from '@constants';
-import { useAuth } from '@context';
 import { useSearchMovies } from '@customHooks';
 
 const useHeaderState = () => {
-    const { user, setUser } = useAuth();
+    const user = useSelector(state => state.user);
     const [searchValue, setSearchValue] = useState('');
     const [searchMovies, setSearchMovies] = useState(null);
     const { isFetching } = useSearchMovies(searchValue, setSearchMovies);
@@ -48,7 +48,6 @@ const useHeaderState = () => {
     return {
         isSearchInputVisible,
         user,
-        setUser,
         searchMovies,
         isFetching,
         searchValue,
