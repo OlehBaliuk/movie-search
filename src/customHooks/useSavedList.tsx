@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { setDoc, doc, deleteDoc } from 'firebase/firestore';
 import { useSelector } from 'react-redux';
 import { db } from '@firebaseConfig';
 import { getRequestPayload } from '@helpers';
+import { Movie } from '@interfaces';
 
-export const useSavedList = movie => {
-    const user = useSelector(state => state.user);
-    const { movies } = useSelector(state => state.savedMovies);
+export const useSavedList = (movie: Movie) => {
+    const user = useSelector((state: any) => state.user);
+    const { movies } = useSelector((state: any) => state.savedMovies);
 
-    const isSavedMovie = movies.some(savedMovie => savedMovie.id === movie.id);
+    const isSavedMovie = movies.some((savedMovie: Movie) => savedMovie.id === movie.id);
 
-    const addMovieToSavedList = async e => {
+    const addMovieToSavedList = async (e: MouseEvent<HTMLElement>) => {
         e.preventDefault();
 
         try {
@@ -21,7 +22,7 @@ export const useSavedList = movie => {
         }
     };
 
-    const deleteMovieFromSavedList = async e => {
+    const deleteMovieFromSavedList = async (e: MouseEvent<HTMLElement>) => {
         e.preventDefault();
 
         try {

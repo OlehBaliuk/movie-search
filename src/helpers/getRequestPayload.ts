@@ -1,4 +1,6 @@
-export const getRequestPayload = movie => {
+import { Movie } from '@interfaces';
+
+export const getRequestPayload = (movie: Movie) => {
     return {
         id: movie.id,
         title: movie.title,
