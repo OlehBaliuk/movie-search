@@ -11,4 +11,9 @@ interface SpanProps {
     fontSize?: string;
 }
 
-export type { FlexContainerProps, SpanProps };
+interface MediumHeaderProps {
+    color?: string;
+    textAlign?: string;
+}
+
+export type { FlexContainerProps, SpanProps, MediumHeaderProps };

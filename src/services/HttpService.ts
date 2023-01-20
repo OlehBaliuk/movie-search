@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 export default class HttpService {
+    instance: AxiosInstance;
     constructor() {
         const instance = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
@@ -19,17 +20,17 @@ export default class HttpService {
         this.instance = instance;
     }
 
-    requestHandler = config => {
+    requestHandler = (config: AxiosRequestConfig) => {
         config.params = { ...config.params, api_key: process.env.REACT_APP_API_KEY };
 
         return config;
     };
 
-    responseHandler = response => {
+    responseHandler = (response: AxiosResponse) => {
         return response;
     };
 
-    errorHandler = error => {
+    errorHandler = (error: AxiosError) => {
         if (error.response) {
             return error.response.data;
         } else {
@@ -37,15 +38,15 @@ export default class HttpService {
         }
     };
 
-    get(url, params) {
+    get(url: string, params: any) {
         return this.instance({ method: 'get', url, params });
     }
 
-    post(url, params, data) {
+    post(url: string, params: any, data: any) {
         return this.instance({ method: 'post', url, params, data });
     }
 
-    delete(url, params) {
+    delete(url: string, params: any) {
         return this.instance({ method: 'delete', url, params });
     }
 }

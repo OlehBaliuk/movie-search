@@ -1,8 +1,8 @@
-import { Movie } from '@interfaces';
+import { Movie } from "@interfaces";
 
 interface SearchMoviesResponse {
     page: number;
-    results: Movie[];
+    results: Array<Movie>;
     total_pages: number;
     total_results: number;
 }
