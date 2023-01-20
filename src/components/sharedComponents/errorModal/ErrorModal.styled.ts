@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+import { ModalProps } from './types';
 
-const Modal = styled.div`
+const Modal = styled.div<ModalProps>`
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.4);
@@ -22,7 +23,7 @@ const Modal = styled.div`
         `}
 `;
 
-const ModalContainer = styled.div`
+const ModalContainer = styled.div<ModalProps>`
     padding: 20px;
     border-radius: 10px;
     background-color: white;

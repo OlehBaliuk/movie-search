@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import saveIconOrange from '@images/saveIconOrange.svg';
 import saveIconWhite from '@images/saveIconWhite.svg';
 import { useSavedList } from '@customHooks';
 import { getMoviePosterPath } from '@helpers';
 import { SaveIconWrapper, Span } from '@sharedStyledComponents';
 import { MovieCardContainer, Poster, StyledFlexContainer, Strong } from './MovieCard.styled';
+import { MovieCardProps } from './types';
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard: FC<MovieCardProps> = ({ movie }) => {
     const { user, isSavedMovie, addMovieToSavedList, deleteMovieFromSavedList } = useSavedList(movie);
 
     return (

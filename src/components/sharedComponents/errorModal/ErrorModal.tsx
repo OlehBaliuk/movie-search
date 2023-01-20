@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useAuthErrorHandler } from '@customHooks';
 import { Modal, ModalContainer } from './ErrorModal.styled';
+import { ErrorModalProps } from './types';
 
-export const ErrorModal = ({ active, setActive, message }) => {
+export const ErrorModal: FC<ErrorModalProps> = ({ active, setActive, message }) => {
     const { displayCustomAuthError } = useAuthErrorHandler();
 
     return (

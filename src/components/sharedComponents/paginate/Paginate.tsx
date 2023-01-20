@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import arrowLeft from '@images/arrowLeft.svg';
 import arrowRight from '@images/arrowRight.svg';
 import { StyledReactPaginate } from './Paginate.styled';
+import { PaginateProps } from './types';
 
-export const Paginate = ({ pageQuery, pageCount, handlePageClick }) => {
+export const Paginate: FC<PaginateProps> = ({ pageQuery, pageCount, handlePageClick }) => {
     return (
         <StyledReactPaginate
-            forcePage={pageQuery - 1}
+            forcePage={+pageQuery - 1}
             marginPagesDisplayed={1}
             pageCount={pageCount}
             pageRangeDisplayed={10}

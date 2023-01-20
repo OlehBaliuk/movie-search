@@ -7,4 +7,8 @@ interface FlexContainerProps {
     padding?: string;
 }
 
-export type { FlexContainerProps };
+interface SpanProps {
+    fontSize?: string;
+}
+
+export type { FlexContainerProps, SpanProps };

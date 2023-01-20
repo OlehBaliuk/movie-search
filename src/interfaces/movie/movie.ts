@@ -1,3 +1,8 @@
+interface Genre {
+    id: number;
+    name: string;
+}
+
 interface Movie {
     id: number;
     overview: string;
@@ -6,6 +11,7 @@ interface Movie {
     savedTimestamp: number;
     title: string;
     vote_average: number;
+    genres: Genre[];
 }
 
-export type { Movie };
+export type { Movie, Genre };

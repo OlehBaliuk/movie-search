@@ -10,7 +10,7 @@ const useRegistrationPageState = () => {
     const navigate = useNavigate();
     const auth = getAuth();
     const [createUserWithEmailAndPassword, , loading, error] = useCreateUserWithEmailAndPassword(auth);
-    const [modalActive, setModalActive] = useState<boolean>();
+    const [modalActive, setModalActive] = useState<boolean>(false);
     const dispatch = useDispatch();
 
     const handleRegistration = async (email: string, password: string) => {
