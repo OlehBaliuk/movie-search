@@ -1,27 +1,37 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import axios, {
+    AxiosInstance,
+    AxiosRequestConfig,
+    AxiosResponse,
+    AxiosError,
+} from "axios";
 
 export default class HttpService {
     instance: AxiosInstance;
     constructor() {
-        const instance = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
+        const instance = axios.create({
+            baseURL: process.env.REACT_APP_BASE_URL,
+        });
 
         instance.interceptors.request.use(
-            config => this.requestHandler(config),
-            error => {
+            (config) => this.requestHandler(config),
+            (error) => {
                 return Promise.reject(error);
-            },
+            }
         );
 
         instance.interceptors.response.use(
-            response => this.responseHandler(response),
-            error => this.errorHandler(error),
+            (response) => this.responseHandler(response),
+            (error) => this.errorHandler(error)
         );
 
         this.instance = instance;
     }
 
     requestHandler = (config: AxiosRequestConfig) => {
-        config.params = { ...config.params, api_key: process.env.REACT_APP_API_KEY };
+        config.params = {
+            ...config.params,
+            api_key: process.env.REACT_APP_API_KEY,
+        };
 
         return config;
     };
@@ -38,15 +48,15 @@ export default class HttpService {
         }
     };
 
-    get(url: string, params: any) {
-        return this.instance({ method: 'get', url, params });
+    get(url: string, params?: any) {
+        return this.instance({ method: "get", url, params });
     }
 
     post(url: string, params: any, data: any) {
-        return this.instance({ method: 'post', url, params, data });
+        return this.instance({ method: "post", url, params, data });
     }
 
     delete(url: string, params: any) {
-        return this.instance({ method: 'delete', url, params });
+        return this.instance({ method: "delete", url, params });
     }
 }

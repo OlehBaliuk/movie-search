@@ -4,8 +4,8 @@ const apiRoutes = {
     getUpcomingMovies: () => 'movie/upcoming',
     getNowInTheCinema: () => 'movie/now_playing',
     getSearchMovies: () => 'search/movie',
-    getMovieInfo: id => `movie/${id}`,
-    getCastByMovie: id => `movie/${id}/credits`,
+    getMovieInfo: (id: string | undefined) => `movie/${id}`,
+    getCastByMovie: (id: string | undefined) => `movie/${id}/credits`,
 };
 
 export default apiRoutes;

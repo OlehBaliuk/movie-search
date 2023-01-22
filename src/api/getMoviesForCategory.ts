@@ -1,8 +1,8 @@
 import { api } from '@api';
 import { MAX_PAGE_COUNT } from '@constants';
 
-export const getMoviesForCategory = (category, setMovies, page, setPageCount) => {
-    const fetchData = async getMovies => {
+export const getMoviesForCategory = (category: string, setMovies: any, page?: number, setPageCount?: any) => {
+    const fetchData = async (getMovies: any) => {
         const response = await getMovies(page);
         setMovies(response.results);
 
@@ -19,5 +19,5 @@ export const getMoviesForCategory = (category, setMovies, page, setPageCount) =>
         'now-in-the-cinema': () => fetchData(api.getNowInTheCinema),
     };
 
-    return categories[category]();
+    return (categories as any)[category]();
 };
